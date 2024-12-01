@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SasakTravel.id</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@400;600&display=swap');
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <!-- Navbar -->
+    <div class="sticky top-0 z-50 bg-gradient-to-r from-blue-500 to-teal-400 text-white shadow-lg">
+        <div class="container mx-auto flex justify-between items-center py-4 px-6">
+            <!-- Logo -->
+            <a href="#" class="text-3xl font-bold" style="font-family: 'Pacifico', cursive;">
+                SasakTravel.id
+            </a>
+            <!-- Navigation Links -->
+            <nav class="hidden md:flex space-x-8" style="font-family: 'Inter', sans-serif;">
+                <a href="#home" class="hover:text-yellow-300 text-lg">Home</a>
+                <a href="#about" class="hover:text-yellow-300 text-lg">About</a>
+                <a href="#destinations" class="hover:text-yellow-300 text-lg">Destinations</a>
+                <a href="#contact" class="hover:text-yellow-300 text-lg">Contact</a>
+            </nav>
+            <!-- Mobile Menu Button -->
+            <button id="menu-toggle" class="md:hidden focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-8 h-8">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-blue-600">
+            <a href="#home" class="block px-4 py-2 hover:bg-blue-500 text-white">Home</a>
+            <a href="#about" class="block px-4 py-2 hover:bg-blue-500 text-white">About</a>
+            <a href="#destinations" class="block px-4 py-2 hover:bg-blue-500 text-white">Destinations</a>
+            <a href="#contact" class="block px-4 py-2 hover:bg-blue-500 text-white">Contact</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen bg-cover bg-center" style="background-image: url('img/hero.jpg');">
+        <div class="absolute inset-0 bg-gradient-to-t from-blue-900 via-blue-600 to-transparent opacity-75"></div>
+        <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-white px-6">
+            <h1 class="text-4xl md:text-6xl font-bold drop-shadow-lg" style="font-family: 'Pacifico', cursive;">
+                Explore the Wonders of Lombok
+            </h1>
+            <p class="mt-4 text-lg md:text-xl max-w-2xl" style="font-family: 'Inter', sans-serif;">
+                Unveil the beauty of pristine beaches, towering mountains, and the unique Sasak culture. Let's embark on an unforgettable journey!
+            </p>
+            <div class="mt-8 space-x-4">
+                <a href="#destinations" class="px-6 py-3 bg-yellow-400 text-blue-900 font-semibold rounded-lg shadow-lg hover:bg-yellow-500 transition duration-300">
+                    Explore 
+                </a>
+            </div>
+        </div>
+    </section>
+
+        <!-- Tentang Kami Section -->
+        <section id="about" class="py-16 bg-white">
+            <div class="container mx-auto px-6 lg:px-20">
+                <div class="flex flex-col lg:flex-row items-center">
+                    <!-- Image -->
+                    <div class="lg:w-1/2">
+                        <img src="img/hero.jpg" alt="Tentang Kami" class="rounded-lg shadow-lg">
+                    </div>
+                    <!-- Text Content -->
+                    <div class="lg:w-1/2 lg:ml-12 mt-10 lg:mt-0 text-center lg:text-left">
+                        <h2 class="text-4xl font-bold text-blue-600" style="font-family: 'Pacifico', cursive;">
+                            About SasakTravel.id
+                        </h2>
+                        <p class="mt-6 text-gray-700 text-lg" style="font-family: 'Inter', sans-serif;">
+                            SasakTravel.id is a travel platform that aims to bring you to enjoy the natural beauty and culture of Lombok. With a focus on excellent service, we help you plan an unforgettable trip.
+                        </p>
+                        <p class="mt-4 text-gray-700 text-lg" style="font-family: 'Inter', sans-serif;">
+                            Enjoy the charm of stunning beaches, green hills and the hospitality of the Sasak people with us. We are here to ensure your vacation experience is full of wonderful memories.
+                        </p>
+                        <a href="#contact" class="mt-6 inline-block px-6 py-3 bg-blue-600 text-white text-lg font-semibold rounded-lg shadow-lg hover:bg-blue-700 transition duration-300">
+                            Contact Us
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+         <!-- Paket Wisata Lombok Section -->
+    <section id="packages" class="py-16 bg-blue-50">
+        <div class="container mx-auto px-6 lg:px-20 text-center">
+            <h2 class="text-4xl font-bold text-blue-600" style="font-family: 'Pacifico', cursive;">
+                Lombok Tour Package
+            </h2>
+            <p class="mt-4 text-gray-700 text-lg max-w-2xl mx-auto" style="font-family: 'Inter', sans-serif;">
+                Choose the best travel packages that we provide for you. Enjoy the beauty of Lombok with a wide selection of tour packages that suit your needs!
+            </p>
+
+            <!-- Paket Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+                <!-- Paket 1 -->
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <img src="img/hero.jpg" alt="Paket 1" class="rounded-lg mb-4">
+                    <h3 class="text-2xl font-bold text-blue-600">Paket Pantai</h3>
+                    <p class="mt-2 text-gray-600">
+                        Nikmati eksotisme pantai-pantai indah seperti Pantai Kuta, Tanjung Aan, dan Pink Beach.
+                    </p>
+                    <p class="mt-4 text-lg font-bold text-gray-700">Harga: Rp 1.500.000</p>
+                    <a href="#contact" class="mt-4 inline-block px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-300">
+                        Pesan Sekarang
+                    </a>
+                </div>
+
+                <!-- Paket 2 -->
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <img src="img/hero.jpg" alt="Paket 2" class="rounded-lg mb-4">
+                    <h3 class="text-2xl font-bold text-blue-600">Paket Gunung Rinjani</h3>
+                    <p class="mt-2 text-gray-600">
+                        Jelajahi megahnya Gunung Rinjani dan keindahan Segara Anak yang menakjubkan.
+                    </p>
+                    <p class="mt-4 text-lg font-bold text-gray-700">Harga: Rp 2.800.000</p>
+                    <a href="#contact" class="mt-4 inline-block px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-300">
+                        Pesan Sekarang
+                    </a>
+                </div>
+
+                <!-- Paket 3 -->
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <img src="img/hero.jpg" alt="Paket 3" class="rounded-lg mb-4">
+                    <h3 class="text-2xl font-bold text-blue-600">Paket Budaya</h3>
+                    <p class="mt-2 text-gray-600">
+                        Temukan keunikan budaya Sasak, desa tradisional, dan seni lokal Lombok.
+                    </p>
+                    <p class="mt-4 text-lg font-bold text-gray-700">Harga: Rp 1.200.000</p>
+                    <a href="#contact" class="mt-4 inline-block px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-300">
+                        Pesan Sekarang
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- JavaScript -->
+    <script>
+        const menuToggle = document.getElementById("menu-toggle");
+        const mobileMenu = document.getElementById("mobile-menu");
+
+        menuToggle.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+        });
+    </script>
+</body>
+</html>
