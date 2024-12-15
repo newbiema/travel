@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@400;600&display=swap');
+    /* Dark Mode Styles */
+    :root {
+        --bg-color: white;
+        --text-color: black;
+    }
+
+    .dark :root {
+        --bg-color: #1a202c;
+        --text-color: white;
+    }
+
+    body {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+    }
+
+    @keyframes fadeInUp {
+        0% {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .animate-fadeInUp {
+        animation: fadeInUp 1s ease-out forwards;
+    }
+
+    #menu-toggle:checked ~ #mobile-menu {
+        display: block;
+        animation: slideIn 0.3s ease-out;
+    }
+
+    @keyframes slideIn {
+        from {
+            transform: translateX(100%);
+        }
+        to {
+            transform: translateX(0);
+        }
+    }
+
+    /* Transisi untuk mobile menu */
+#mobile-menu {
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(100%);
+}
+
+#mobile-menu.open {
+    transform: translateX(0);
+}
+
+/* Efek overlay */
+#overlay {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+#overlay.visible {
+    opacity: 1;
+}
+
+
