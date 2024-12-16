@@ -8,8 +8,66 @@
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="bg-gray-100">
-    <!-- Add CSS for Mobile Menu Transition -->
+<body class="bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200">
+    <!-- Navbar -->
+    <div class="sticky top-0 z-50 bg-gradient-to-r from-blue-500 to-teal-400 text-white shadow-lg transition duration-300">
+        <div class="container mx-auto flex justify-between items-center py-4 px-6">
+            <!-- Logo -->
+            <a href="#" class="text-3xl font-bold tracking-wide hover:scale-105 transition-transform" style="font-family: 'Pacifico', cursive;">
+                SasakTravel.id
+            </a>
+
+            <!-- Navigation Links -->
+            <nav id="desktop-menu" class="hidden md:flex space-x-8" style="font-family: 'Inter', sans-serif;">
+                <a href="#home" class="hover:text-yellow-300 text-lg transition duration-300 hover:underline">Home</a>
+                <a href="#about" class="hover:text-yellow-300 text-lg transition duration-300 hover:underline">About</a>
+
+                <!-- Dropdown Menu -->
+                <div class="relative group">
+                    <a href="#destinations" class="hover:text-yellow-300 text-lg transition duration-300 flex items-center">Destinations
+                        <svg class="w-5 h-5 ml-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </a>
+                    <div class="absolute hidden group-hover:block bg-blue-600 shadow-md rounded-md mt-2 animate-fade-in-down">
+                        <a href="#beaches" class="block px-4 py-2 hover:bg-blue-500 text-white">Beaches</a>
+                        <a href="#mountains" class="block px-4 py-2 hover:bg-blue-500 text-white">Mountains</a>
+                        <a href="#culture" class="block px-4 py-2 hover:bg-blue-500 text-white">Culture</a>
+                    </div>
+                </div>
+
+                <a href="#contact" class="hover:text-yellow-300 text-lg transition duration-300 hover:underline">Contact</a>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <div class="flex items-center space-x-4">
+                <!-- Dark Mode Toggle -->
+                <button id="dark-mode-toggle" class="focus:outline-none">
+                    <svg id="light-icon" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v3m0 12v3m9-9h-3m-12 0H3m16.95 6.95l-2.121-2.121M6.343 6.343L4.222 4.222m12.728 12.728l-2.121-2.121M6.343 17.657l-2.121 2.121" />
+                    </svg>
+                    <svg id="dark-icon" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3C10.114 3 8.386 3.632 7 4.758A8.959 8.959 0 005 12c0 2.967 1.522 5.569 3.758 7A8.959 8.959 0 0012 21c4.962 0 9-4.038 9-9s-4.038-9-9-9z" />
+                    </svg>
+                </button>
+
+                <!-- Mobile Menu Toggle -->
+                <button id="menu-toggle" class="md:hidden focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-8 h-8">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <nav id="mobile-menu" class="hidden md:hidden bg-blue-600 text-white space-y-2 px-4 py-6">
+            <a href="#home" class="block hover:bg-blue-500 px-4 py-2">Home</a>
+            <a href="#about" class="block hover:bg-blue-500 px-4 py-2">About</a>
+            <a href="#destinations" class="block hover:bg-blue-500 px-4 py-2">Destinations</a>
+            <a href="#contact" class="block hover:bg-blue-500 px-4 py-2">Contact</a>
+        </nav>
+    </div>
 
 
 
@@ -102,6 +160,16 @@
         </div>
     </div>
 </section>
+
+<script>
+    // Mobile Menu Toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuToggle.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+
+</script>
 
 
 
