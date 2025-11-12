@@ -3,12 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="SasakTravel.id - Discover Lombok. Paket wisata, sewa mobil, dan itinerary custom untuk menjelajahi keindahan Lombok.">
+  <meta name="keywords" content="Lombok, wisata, travel, Sasak, Gili, Rinjani, sewa mobil">
+  <meta name="author" content="SasakTravel.id">
   <title>SasakTravel.id - Discover Lombok</title>
+  
+  <!-- External Resources -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <!-- AOS CSS -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  
+  <!-- Tailwind Configuration -->
   <script>
     tailwind.config = {
       theme: {
@@ -24,8 +30,10 @@
       }
     }
   </script>
+  
+  <!-- Custom Styles -->
   <style>
-    /* sedikit glass untuk navbar */
+    /* Navbar with glass effect */
     .nav-blur {
       background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(10px);
@@ -36,26 +44,26 @@
       scroll-behavior: smooth;
     }
     
-    /* Custom gradient untuk hero */
+    /* Custom gradient for hero section */
     .hero-gradient {
       background: linear-gradient(135deg, #1E40AF 0%, #0D9488 100%);
     }
     
-    /* Custom shadow untuk cards */
+    /* Card shadows and hover effects */
     .card-shadow {
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     }
     
-    /* Hover effect untuk cards */
     .card-hover {
       transition: all 0.3s ease;
     }
+    
     .card-hover:hover {
       transform: translateY(-5px);
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
     }
 
-    /* Fix untuk mobile menu */
+    /* Mobile menu animation */
     .mobile-menu {
       max-height: 0;
       overflow: hidden;
@@ -66,14 +74,14 @@
       max-height: 300px;
     }
 
-    /* Fix untuk gambar responsif */
+    /* Responsive images */
     .responsive-img {
       width: 100%;
       height: auto;
       object-fit: cover;
     }
 
-    /* Padding tambahan untuk mobile */
+    /* Mobile-specific styles */
     @media (max-width: 768px) {
       .section-padding {
         padding-left: 1rem;
@@ -94,516 +102,622 @@
     }
   </style>
 </head>
+
 <body class="font-sans bg-slate-50 text-slate-800" x-data="{ mobileOpen: false }">
+  <!-- Navigation -->
+  <header>
+    <nav class="fixed top-0 inset-x-0 z-50 nav-blur border-b border-slate-200 shadow-sm" data-aos="fade-down">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex h-16 items-center justify-between">
+          <!-- Logo -->
+          <a href="#home" class="flex items-center gap-2">
+            <div class="w-9 h-9 bg-primary text-white rounded-lg flex items-center justify-center">
+              <i class="fas fa-map-marked-alt text-sm" aria-hidden="true"></i>
+            </div>
+            <span class="text-lg font-semibold text-slate-900">SasakTravel.id</span>
+          </a>
 
-  <!-- Navbar -->
-  <nav class="fixed top-0 inset-x-0 z-50 nav-blur border-b border-slate-200 shadow-sm" data-aos="fade-down">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex h-16 items-center justify-between">
-        <!-- Logo -->
-        <a href="#home" class="flex items-center gap-2">
-          <div class="w-9 h-9 bg-primary text-white rounded-lg flex items-center justify-center">
-            <i class="fas fa-map-marked-alt text-sm"></i>
+          <!-- Desktop Navigation -->
+          <div class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600">
+            <a href="#home" class="hover:text-primary transition">Home</a>
+            <a href="#destinations" class="hover:text-primary transition">Destinasi</a>
+            <a href="packages.html" class="hover:text-primary transition">Paket</a>
+            <a href="#rental" class="hover:text-primary transition">Sewa Mobil</a>
+            <a href="#about" class="hover:text-primary transition">Tentang</a>
+            <a href="#contact" class="hover:text-primary transition">Kontak</a>
           </div>
-          <span class="text-lg font-semibold text-slate-900 tracking-tight">SasakTravel.id</span>
-        </a>
 
-        <!-- Desktop menu -->
-        <div class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600">
-          <a href="#home" class="hover:text-primary transition">Home</a>
-          <a href="#destinations" class="hover:text-primary transition">Destinasi</a>
-          <a href="packages.html" class="hover:text-primary transition">Paket</a>
-          <a href="#rental" class="hover:text-primary transition">Sewa Mobil</a>
-          <a href="#about" class="hover:text-primary transition">Tentang</a>
-          <a href="#contact" class="hover:text-primary transition">Kontak</a>
+          <!-- CTA Button -->
+          <div class="hidden md:flex">
+            <a href="packages.html" class="inline-flex items-center gap-2 bg-primary text-white text-sm font-semibold px-4 py-2 rounded-lg hover:bg-slate-900 transition shadow-md">
+              <i class="fas fa-calendar-check text-xs" aria-hidden="true"></i>
+              Book Now
+            </a>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button @click="mobileOpen = !mobileOpen" class="md:hidden p-2 rounded-lg hover:bg-slate-100" aria-label="Toggle menu">
+            <i class="fas fa-bars text-slate-700" x-show="!mobileOpen" aria-hidden="true"></i>
+            <i class="fas fa-times text-slate-700" x-show="mobileOpen" aria-hidden="true"></i>
+          </button>
         </div>
 
-        <!-- CTA -->
-        <div class="hidden md:flex">
-          <a href="#booking" class="inline-flex items-center gap-2 bg-primary text-white text-sm font-semibold px-4 py-2 rounded-lg hover:bg-slate-900 transition shadow-md">
-            <i class="fas fa-calendar-check text-xs"></i>
-            Book Now
+        <!-- Mobile Menu -->
+        <div x-show="mobileOpen" x-transition:enter="transition ease-out duration-200"
+             x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
+             x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 scale-100"
+             x-transition:leave-end="opacity-0 scale-95" 
+             class="md:hidden pb-4 space-y-2 bg-white rounded-lg mt-2 shadow-lg">
+          <a href="#home" class="block py-3 px-4 text-slate-700 hover:text-primary hover:bg-slate-50 rounded-md" @click="mobileOpen = false">Home</a>
+          <a href="#destinations" class="block py-3 px-4 text-slate-700 hover:text-primary hover:bg-slate-50 rounded-md" @click="mobileOpen = false">Destinasi</a>
+          <a href="packages.html" class="block py-3 px-4 text-slate-700 hover:text-primary hover:bg-slate-50 rounded-md" @click="mobileOpen = false">Paket</a>
+          <a href="#rental" class="block py-3 px-4 text-slate-700 hover:text-primary hover:bg-slate-50 rounded-md" @click="mobileOpen = false">Sewa Mobil</a>
+          <a href="#about" class="block py-3 px-4 text-slate-700 hover:text-primary hover:bg-slate-50 rounded-md" @click="mobileOpen = false">Tentang</a>
+          <a href="#contact" class="block py-3 px-4 text-slate-700 hover:text-primary hover:bg-slate-50 rounded-md" @click="mobileOpen = false">Kontak</a>
+          <div class="pt-2 px-4">
+            <a href="packages.html" class="inline-flex items-center justify-center gap-2 bg-primary text-white text-sm font-semibold px-4 py-3 rounded-lg w-full" @click="mobileOpen = false">
+              <i class="fas fa-calendar-check text-xs" aria-hidden="true"></i> Book Now
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Hero Section -->
+    <section id="home" class="pt-28 pb-16 section-padding">
+      <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-8 md:gap-10 items-center">
+        <div class="space-y-6 mobile-text-center" data-aos="fade-right" data-aos-delay="100">
+          <span class="inline-flex items-center gap-2 bg-white border border-slate-200 text-slate-700 text-xs font-medium px-3 py-1 rounded-full shadow-sm mx-auto md:mx-0">
+            <span class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" aria-hidden="true"></span>
+            Trusted by 10,000+ travelers
+          </span>
+
+          <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-slate-900">
+            Discover Lombok's <span class="text-primary">Hidden Gems</span>
+          </h1>
+          <p class="text-slate-600 text-base md:text-lg leading-relaxed">
+            Pantai bersih, gunung megah, dan budaya Sasak yang hangat. Kami siapkan perjalanan yang mudah dan menyenangkan.
+          </p>
+
+          <div class="flex flex-wrap gap-4 justify-center md:justify-start">
+            <div class="flex items-center gap-2 text-sm text-slate-600">
+              <i class="fas fa-check text-emerald-500 text-xs" aria-hidden="true"></i> Local guide
+            </div>
+            <div class="flex items-center gap-2 text-sm text-slate-600">
+              <i class="fas fa-check text-emerald-500 text-xs" aria-hidden="true"></i> Harga transparan
+            </div>
+            <div class="flex items-center gap-2 text-sm text-slate-600">
+              <i class="fas fa-check text-emerald-500 text-xs" aria-hidden="true"></i> Support 24/7
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-3 justify-center md:justify-start">
+            <a href="#destinations" class="inline-flex items-center gap-2 bg-primary text-white px-5 py-3 rounded-lg text-sm font-semibold hover:bg-slate-900 transition shadow-md mobile-full-width justify-center">
+              <i class="fas fa-map-marked-alt text-xs" aria-hidden="true"></i> Lihat Destinasi
+            </a>
+            <a href="packages.html" class="inline-flex items-center gap-2 bg-white border border-slate-200 text-slate-800 px-5 py-3 rounded-lg text-sm font-semibold hover:border-primary transition shadow-sm mobile-full-width justify-center">
+              <i class="fas fa-suitcase text-primary text-xs" aria-hidden="true"></i> Order Now
+            </a>
+          </div>
+        </div>
+
+        <div class="relative order-first lg:order-last" data-aos="fade-left" data-aos-delay="200">
+          <img src="img/hero.jpg" alt="Pemandangan alam Lombok dengan pantai dan perbukitan" class="rounded-2xl shadow-lg w-full responsive-img max-h-[400px] md:max-h-[420px]" />
+          <div class="absolute -bottom-4 -left-4 bg-white border border-slate-200 rounded-xl px-4 py-3 shadow-sm" data-aos="zoom-in" data-aos-delay="500">
+            <p class="text-xs text-slate-500">Destinasi tersedia</p>
+            <p class="text-lg font-semibold text-slate-900">50+ tempat</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="py-14 bg-white section-padding">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center space-y-2 mb-10" data-aos="fade-up">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-900">Kenapa pilih SasakTravel?</h2>
+          <p class="text-slate-500">Fokus ke pengalaman asli Lombok dengan layanan rapi.</p>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="bg-slate-50 border border-slate-100 rounded-2xl p-6 space-y-3 card-shadow card-hover" data-aos="fade-up" data-aos-delay="100">
+            <div class="w-10 h-10 bg-primary/10 text-primary flex items-center justify-center rounded-lg">
+              <i class="fas fa-map" aria-hidden="true"></i>
+            </div>
+            <h3 class="font-semibold text-slate-900">Itinerary Kurasi</h3>
+            <p class="text-sm text-slate-600">Trip sudah disusun supaya waktunya efisien tanpa kehilangan spot terbaik.</p>
+          </div>
+          <div class="bg-slate-50 border border-slate-100 rounded-2xl p-6 space-y-3 card-shadow card-hover" data-aos="fade-up" data-aos-delay="200">
+            <div class="w-10 h-10 bg-primary/10 text-primary flex items-center justify-center rounded-lg">
+              <i class="fas fa-users" aria-hidden="true"></i>
+            </div>
+            <h3 class="font-semibold text-slate-900">Guide Lokal</h3>
+            <p class="text-sm text-slate-600">Kenal budaya Sasak dan spot hidden yang jarang turis tahu.</p>
+          </div>
+          <div class="bg-slate-50 border border-slate-100 rounded-2xl p-6 space-y-3 card-shadow card-hover" data-aos="fade-up" data-aos-delay="300">
+            <div class="w-10 h-10 bg-primary/10 text-primary flex items-center justify-center rounded-lg">
+              <i class="fas fa-shield-alt" aria-hidden="true"></i>
+            </div>
+            <h3 class="font-semibold text-slate-900">Aman & Tertata</h3>
+            <p class="text-sm text-slate-600">Transport, tiket, dan komunikasi sudah disiapkan.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-14 bg-slate-50 section-padding">
+      <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-8 md:gap-10 items-center">
+        <!-- Text Content -->
+        <div class="space-y-5 mobile-text-center md:text-left" data-aos="fade-right">
+          <span class="inline-flex items-center gap-2 bg-white border border-slate-200 text-slate-700 text-xs font-medium px-3 py-1 rounded-full shadow-sm mx-auto md:mx-0">
+            <i class="fas fa-info-circle text-primary" aria-hidden="true"></i>
+            Tentang SasakTravel.id
+          </span>
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-900">
+            Travel lokal yang ngerti Lombok luar–dalam.
+          </h2>
+          <p class="text-slate-600 text-sm md:text-base leading-relaxed">
+            SasakTravel.id berawal dari pemandu lokal yang sering diminta jemput dan antar tamu ke spot-spot
+            tersembunyi di Lombok. Dari situ kami sadar: banyak orang pengin ke Lombok, tapi malas ribet
+            urus transport, itinerary, dan komunikasi. Jadi kami satukan semua itu jadi satu layanan.
+          </p>
+          <p class="text-slate-600 text-sm md:text-base leading-relaxed">
+            Fokus kami: perjalanan rapi, harga jelas, dan pengalaman lokal yang asli (bukan cuma foto di pantai).
+          </p>
+
+          <div class="grid grid-cols-3 gap-4 pt-3 max-w-xs mx-auto md:mx-0">
+            <div data-aos="zoom-in" data-aos-delay="100">
+              <p class="text-2xl font-bold text-slate-900">10K+</p>
+              <p class="text-xs text-slate-500">Traveler dilayani</p>
+            </div>
+            <div data-aos="zoom-in" data-aos-delay="200">
+              <p class="text-2xl font-bold text-slate-900">50+</p>
+              <p class="text-xs text-slate-500">Destinasi Lombok</p>
+            </div>
+            <div data-aos="zoom-in" data-aos-delay="300">
+              <p class="text-2xl font-bold text-slate-900">24/7</p>
+              <p class="text-xs text-slate-500">Support lokal</p>
+            </div>
+          </div>
+
+          <div class="pt-2">
+            <a href="#contact" class="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-slate-900 mx-auto md:mx-0">
+              Hubungi tim kami
+              <i class="fas fa-arrow-right text-xs" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Image/Illustration -->
+        <div class="bg-white border border-slate-100 rounded-2xl p-5 md:p-6 card-shadow card-hover" data-aos="fade-left">
+          <div class="aspect-[4/3] rounded-xl overflow-hidden mb-4">
+            <img src="https://images.unsplash.com/photo-1537640538966-79f369143f8f?auto=format&fit=crop&w=1200&q=80"
+                 alt="Budaya dan tradisi masyarakat Sasak di Lombok"
+                 class="w-full h-full responsive-img">
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="w-10 h-10 bg-primary/10 text-primary flex items-center justify-center rounded-lg flex-shrink-0">
+              <i class="fas fa-headset" aria-hidden="true"></i>
+            </div>
+            <div>
+              <p class="text-sm font-semibold text-slate-900">Tim lokal & fast response</p>
+              <p class="text-xs text-slate-500 mt-1">
+                Kamu bisa tanya soal cuaca, rute, sampai rekomendasi kuliner Sasak langsung ke kami.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Destinations Section -->
+    <section id="destinations" class="py-14 bg-slate-50 section-padding">
+      <div class="max-w-6xl mx-auto">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-12 gap-4">
+          <div class="mobile-text-center sm:text-left">
+            <h2 class="text-2xl md:text-3xl font-bold text-slate-900">Destinasi Populer</h2>
+            <p class="text-slate-500 mt-2">Temukan pengalaman terbaik di Lombok</p>
+          </div>
+          <a href="packages.html" class="text-sm font-medium text-primary hover:text-slate-700 transition">
+            Lihat semua →
           </a>
         </div>
 
-        <!-- Mobile button -->
-        <button @click="mobileOpen = !mobileOpen" class="md:hidden p-2 rounded-lg hover:bg-slate-100">
-          <i class="fas fa-bars text-slate-700" x-show="!mobileOpen"></i>
-          <i class="fas fa-times text-slate-700" x-show="mobileOpen"></i>
-        </button>
-      </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Card 1 - Rinjani -->
+          <article class="bg-white rounded-2xl overflow-hidden card-shadow card-hover group" data-aos="fade-up">
+            <div class="relative h-48 overflow-hidden">
+              <img src="img/rinjani.jpeg" alt="Pemandangan Gunung Rinjani dengan danau kawah Segara Anak" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+              <div class="absolute bottom-4 left-4">
+                <span class="bg-white text-slate-700 text-xs font-medium px-3 py-1 rounded-full">3 Hari</span>
+              </div>
+            </div>
+            
+            <div class="p-6 space-y-4">
+              <div class="space-y-3">
+                <h3 class="font-semibold text-slate-900 text-lg">Trekking Rinjani</h3>
+                <p class="text-slate-600 text-sm leading-relaxed">Pendakian ke gunung berapi tertinggi kedua di Indonesia dengan danau kawah yang memukau.</p>
+              </div>
+              
+              <div class="flex items-center justify-between pt-2">
+                <div class="space-y-1">
+                  <p class="text-xl font-bold text-slate-900">$299</p>
+                  <div class="flex items-center gap-1 text-sm text-slate-500">
+                    <i class="fas fa-users text-xs" aria-hidden="true"></i>
+                    <span>2-10 orang</span>
+                  </div>
+                </div>
+                <a href="detail/Gunung_Rinjani.html" class="text-primary font-medium text-sm hover:text-slate-900 transition flex items-center gap-2">
+                  Detail
+                  <i class="fas fa-arrow-right text-xs" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+          </article>
 
-      <!-- Mobile menu -->
-      <div x-show="mobileOpen" x-transition:enter="transition ease-out duration-200"
-           x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
-           x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 scale-100"
-           x-transition:leave-end="opacity-0 scale-95" class="md:hidden pb-4 space-y-2 bg-white rounded-lg mt-2 shadow-lg">
-        <a href="#home" class="block py-3 px-4 text-slate-700 hover:text-primary hover:bg-slate-50 rounded-md" @click="mobileOpen = false">Home</a>
-        <a href="#destinations" class="block py-3 px-4 text-slate-700 hover:text-primary hover:bg-slate-50 rounded-md" @click="mobileOpen = false">Destinasi</a>
-        <a href="packages.html" class="block py-3 px-4 text-slate-700 hover:text-primary hover:bg-slate-50 rounded-md" @click="mobileOpen = false">Paket</a>
-        <a href="#rental" class="block py-3 px-4 text-slate-700 hover:text-primary hover:bg-slate-50 rounded-md" @click="mobileOpen = false">Sewa Mobil</a>
-        <a href="#about" class="block py-3 px-4 text-slate-700 hover:text-primary hover:bg-slate-50 rounded-md" @click="mobileOpen = false">Tentang</a>
-        <a href="#contact" class="block py-3 px-4 text-slate-700 hover:text-primary hover:bg-slate-50 rounded-md" @click="mobileOpen = false">Kontak</a>
-        <div class="pt-2 px-4">
-          <a href="#booking" class="inline-flex items-center justify-center gap-2 bg-primary text-white text-sm font-semibold px-4 py-3 rounded-lg w-full" @click="mobileOpen = false">
-            <i class="fas fa-calendar-check text-xs"></i> Book Now
-          </a>
+          <!-- Card 2 - Gili Islands -->
+          <article class="bg-white rounded-2xl overflow-hidden card-shadow card-hover group" data-aos="fade-up" data-aos-delay="100">
+            <div class="relative h-48 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1483683804023-6ccdb62f86ef?auto=format&fit=crop&w=1200&q=80" alt="Pulau Gili dengan pantai berpasir putih dan air laut jernih" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+              <div class="absolute bottom-4 left-4">
+                <span class="bg-white text-slate-700 text-xs font-medium px-3 py-1 rounded-full">1 Hari</span>
+              </div>
+            </div>
+            
+            <div class="p-6 space-y-4">
+              <div class="space-y-3">
+                <h3 class="font-semibold text-slate-900 text-lg">Gili Island Hopping</h3>
+                <p class="text-slate-600 text-sm leading-relaxed">Jelajahi 3 pulau eksotis: Gili Trawangan, Meno, dan Air dengan snorkeling menyenangkan.</p>
+              </div>
+              
+              <div class="flex items-center justify-between pt-2">
+                <div class="space-y-1">
+                  <p class="text-xl font-bold text-slate-900">$120</p>
+                  <div class="flex items-center gap-1 text-sm text-slate-500">
+                    <i class="fas fa-users text-xs" aria-hidden="true"></i>
+                    <span>2-15 orang</span>
+                  </div>
+                </div>
+                <a href="detail/Gili_Islands.html" class="text-primary font-medium text-sm hover:text-slate-900 transition flex items-center gap-2">
+                  Detail
+                  <i class="fas fa-arrow-right text-xs" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3 - South Lombok Beaches -->
+          <article class="bg-white rounded-2xl overflow-hidden card-shadow card-hover group" data-aos="fade-up" data-aos-delay="200">
+            <div class="relative h-48 overflow-hidden">
+              <img src="img/pantai.jpg" alt="Pantai Selatan Lombok dengan tebing dan ombak yang indah" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+              <div class="absolute bottom-4 left-4">
+                <span class="bg-white text-slate-700 text-xs font-medium px-3 py-1 rounded-full">Full Day</span>
+              </div>
+            </div>
+            
+            <div class="p-6 space-y-4">
+              <div class="space-y-3">
+                <h3 class="font-semibold text-slate-900 text-lg">Pantai Selatan Lombok</h3>
+                <p class="text-slate-600 text-sm leading-relaxed">Tour ke pantai-pantai cantik: Kuta, Tanjung Aan, dan Bukit Merese dengan pemandangan spektakuler.</p>
+              </div>
+              
+              <div class="flex items-center justify-between pt-2">
+                <div class="space-y-1">
+                  <p class="text-xl font-bold text-slate-900">$90</p>
+                  <div class="flex items-center gap-1 text-sm text-slate-500">
+                    <i class="fas fa-users text-xs" aria-hidden="true"></i>
+                    <span>2-6 orang</span>
+                  </div>
+                </div>
+                <a href="detail/South_Beaches.html" class="text-primary font-medium text-sm hover:text-slate-900 transition flex items-center gap-2">
+                  Detail
+                  <i class="fas fa-arrow-right text-xs" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+          </article>
         </div>
       </div>
-    </div>
-  </nav>
+    </section>
 
-  <!-- Hero -->
-  <section id="home" class="pt-28 pb-16 section-padding">
-    <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-8 md:gap-10 items-center">
-      <div class="space-y-6 mobile-text-center" data-aos="fade-right" data-aos-delay="100">
-        <span class="inline-flex items-center gap-2 bg-white border border-slate-200 text-slate-700 text-xs font-medium px-3 py-1 rounded-full shadow-sm mx-auto md:mx-0">
-          <span class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
-          Trusted by 10,000+ travelers
-        </span>
+    <!-- Car Rental Section -->
+    <section id="rental" class="py-14 bg-white section-padding">
+      <div class="max-w-6xl mx-auto">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-12 gap-4">
+          <div class="mobile-text-center sm:text-left">
+            <h2 class="text-2xl md:text-3xl font-bold text-slate-900">Sewa Mobil di Lombok</h2>
+            <p class="text-slate-500 mt-2">Pilihan kendaraan nyaman untuk perjalanan Anda</p>
+          </div>
+          <a href="#contact" class="text-sm font-medium text-primary hover:text-slate-700 transition">
+            Tanya ketersediaan →
+          </a>
+        </div>
 
-        <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-slate-900">
-          Discover Lombok's <span class="text-primary">Hidden Gems</span>
-        </h1>
-        <p class="text-slate-600 text-base md:text-lg leading-relaxed">
-          Pantai bersih, gunung megah, dan budaya Sasak yang hangat. Kami siapkan perjalanan yang mudah dan menyenangkan.
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Car 1 - Toyota Avanza -->
+          <article class="bg-white rounded-2xl overflow-hidden card-shadow card-hover group" data-aos="fade-up">
+            <div class="relative h-40 overflow-hidden">
+              <img src="img/avanza.jpg" 
+                  alt="Toyota Avanza - mobil MPV untuk keluarga kecil" 
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+              <div class="absolute bottom-4 left-4">
+                <span class="bg-white text-slate-700 text-xs font-medium px-3 py-1 rounded-full">6 Penumpang</span>
+              </div>
+            </div>
+            
+            <div class="p-6 space-y-4">
+              <div class="space-y-2">
+                <h3 class="font-semibold text-slate-900 text-lg">Toyota Avanza</h3>
+                <p class="text-slate-600 text-sm">Pilihan hemat untuk keluarga kecil atau perjalanan santai.</p>
+              </div>
+              
+              <div class="flex items-center gap-4 text-sm text-slate-500">
+                <div class="flex items-center gap-1">
+                  <i class="fas fa-cog text-xs" aria-hidden="true"></i>
+                  <span>Manual</span>
+                </div>
+                <div class="flex items-center gap-1">
+                  <i class="fas fa-snowflake text-xs" aria-hidden="true"></i>
+                  <span>AC</span>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between pt-2">
+                <div class="space-y-1">
+                  <p class="text-xl font-bold text-slate-900">Rp450.000</p>
+                  <p class="text-xs text-slate-500">termasuk sopir & BBM</p>
+                </div>
+                <a href="#contact" class="text-primary font-medium text-sm hover:text-slate-900 transition flex items-center gap-2">
+                  Pesan
+                  <i class="fas fa-arrow-right text-xs" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Car 2 - Toyota Innova -->
+          <article class="bg-white rounded-2xl overflow-hidden card-shadow card-hover group" data-aos="fade-up" data-aos-delay="100">
+            <div class="relative h-40 overflow-hidden">
+              <img src="img/innova.jpg" 
+                  alt="Toyota Innova - mobil MPV dengan kabin lega" 
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+              <div class="absolute bottom-4 left-4">
+                <span class="bg-white text-slate-700 text-xs font-medium px-3 py-1 rounded-full">7 Penumpang</span>
+              </div>
+            </div>
+            
+            <div class="p-6 space-y-4">
+              <div class="space-y-2">
+                <h3 class="font-semibold text-slate-900 text-lg">Toyota Innova</h3>
+                <p class="text-slate-600 text-sm">Kabin lega dan nyaman untuk perjalanan bisnis atau keluarga.</p>
+              </div>
+              
+              <div class="flex items-center gap-4 text-sm text-slate-500">
+                <div class="flex items-center gap-1">
+                  <i class="fas fa-cog text-xs" aria-hidden="true"></i>
+                  <span>Manual</span>
+                </div>
+                <div class="flex items-center gap-1">
+                  <i class="fas fa-snowflake text-xs" aria-hidden="true"></i>
+                  <span>Dual AC</span>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between pt-2">
+                <div class="space-y-1">
+                  <p class="text-xl font-bold text-slate-900">Rp650.000</p>
+                  <p class="text-xs text-slate-500">termasuk sopir & BBM</p>
+                </div>
+                <a href="#contact" class="text-primary font-medium text-sm hover:text-slate-900 transition flex items-center gap-2">
+                  Pesan
+                  <i class="fas fa-arrow-right text-xs" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Car 3 - Toyota Hiace -->
+          <article class="bg-white rounded-2xl overflow-hidden card-shadow card-hover group" data-aos="fade-up" data-aos-delay="200">
+            <div class="relative h-40 overflow-hidden">
+              <img src="img/hiace.jpg" 
+                  alt="Toyota Hiace - mobil van untuk rombongan besar" 
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+              <div class="absolute bottom-4 left-4">
+                <span class="bg-white text-slate-700 text-xs font-medium px-3 py-1 rounded-full">15 Penumpang</span>
+              </div>
+            </div>
+            
+            <div class="p-6 space-y-4">
+              <div class="space-y-2">
+                <h3 class="font-semibold text-slate-900 text-lg">Toyota Hiace</h3>
+                <p class="text-slate-600 text-sm">Ideal untuk rombongan besar, outing, atau acara keluarga.</p>
+              </div>
+              
+              <div class="flex items-center gap-4 text-sm text-slate-500">
+                <div class="flex items-center gap-1">
+                  <i class="fas fa-cog text-xs" aria-hidden="true"></i>
+                  <span>Manual</span>
+                </div>
+                <div class="flex items-center gap-1">
+                  <i class="fas fa-snowflake text-xs" aria-hidden="true"></i>
+                  <span>AC Kuat</span>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between pt-2">
+                <div class="space-y-1">
+                  <p class="text-xl font-bold text-slate-900">Rp1.000.000</p>
+                  <p class="text-xs text-slate-500">termasuk sopir & BBM</p>
+                </div>
+                <a href="#contact" class="text-primary font-medium text-sm hover:text-slate-900 transition flex items-center gap-2">
+                  Pesan
+                  <i class="fas fa-arrow-right text-xs" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <p class="text-sm text-slate-500 mt-8 text-center">
+          *Harga dapat berubah tergantung musim dan durasi. Tersedia opsi dengan sopir atau lepas kunci.
         </p>
-
-        <div class="flex flex-wrap gap-4 justify-center md:justify-start">
-          <div class="flex items-center gap-2 text-sm text-slate-600">
-            <i class="fas fa-check text-emerald-500 text-xs"></i> Local guide
-          </div>
-          <div class="flex items-center gap-2 text-sm text-slate-600">
-            <i class="fas fa-check text-emerald-500 text-xs"></i> Harga transparan
-          </div>
-          <div class="flex items-center gap-2 text-sm text-slate-600">
-            <i class="fas fa-check text-emerald-500 text-xs"></i> Support 24/7
-          </div>
-        </div>
-
-        <div class="flex flex-wrap gap-3 justify-center md:justify-start">
-          <a href="#destinations" class="inline-flex items-center gap-2 bg-primary text-white px-5 py-3 rounded-lg text-sm font-semibold hover:bg-slate-900 transition shadow-md mobile-full-width justify-center">
-            <i class="fas fa-map-marked-alt text-xs"></i> Lihat Destinasi
-          </a>
-          <a href="packages.html" class="inline-flex items-center gap-2 bg-white border border-slate-200 text-slate-800 px-5 py-3 rounded-lg text-sm font-semibold hover:border-primary transition shadow-sm mobile-full-width justify-center">
-            <i class="fas fa-suitcase text-primary text-xs"></i> Paket Wisata
-          </a>
-        </div>
       </div>
+    </section>
 
-      <div class="relative order-first lg:order-last" data-aos="fade-left" data-aos-delay="200">
-        <img src="img/hero.jpg" alt="Lombok Landscape" class="rounded-2xl shadow-lg w-full responsive-img max-h-[400px] md:max-h-[420px]" />
-        <div class="absolute -bottom-4 -left-4 bg-white border border-slate-200 rounded-xl px-4 py-3 shadow-sm" data-aos="zoom-in" data-aos-delay="500">
-          <p class="text-xs text-slate-500">Destinasi tersedia</p>
-          <p class="text-lg font-semibold text-slate-900">50+ tempat</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Why section -->
-  <section class="py-14 bg-white section-padding">
-    <div class="max-w-6xl mx-auto">
-      <div class="text-center space-y-2 mb-10" data-aos="fade-up">
-        <h2 class="text-2xl md:text-3xl font-bold text-slate-900">Kenapa pilih SasakTravel?</h2>
-        <p class="text-slate-500">Fokus ke pengalaman asli Lombok dengan layanan rapi.</p>
-      </div>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="bg-slate-50 border border-slate-100 rounded-2xl p-6 space-y-3 card-shadow card-hover" data-aos="fade-up" data-aos-delay="100">
-          <div class="w-10 h-10 bg-primary/10 text-primary flex items-center justify-center rounded-lg">
-            <i class="fas fa-map"></i>
-          </div>
-          <h3 class="font-semibold text-slate-900">Itinerary Kurasi</h3>
-          <p class="text-sm text-slate-600">Trip sudah disusun supaya waktunya efisien tanpa kehilangan spot terbaik.</p>
-        </div>
-        <div class="bg-slate-50 border border-slate-100 rounded-2xl p-6 space-y-3 card-shadow card-hover" data-aos="fade-up" data-aos-delay="200">
-          <div class="w-10 h-10 bg-primary/10 text-primary flex items-center justify-center rounded-lg">
-            <i class="fas fa-users"></i>
-          </div>
-          <h3 class="font-semibold text-slate-900">Guide Lokal</h3>
-          <p class="text-sm text-slate-600">Kenal budaya Sasak dan spot hidden yang jarang turis tahu.</p>
-        </div>
-        <div class="bg-slate-50 border border-slate-100 rounded-2xl p-6 space-y-3 card-shadow card-hover" data-aos="fade-up" data-aos-delay="300">
-          <div class="w-10 h-10 bg-primary/10 text-primary flex items-center justify-center rounded-lg">
-            <i class="fas fa-shield-alt"></i>
-          </div>
-          <h3 class="font-semibold text-slate-900">Aman & Tertata</h3>
-          <p class="text-sm text-slate-600">Transport, tiket, dan komunikasi sudah disiapkan.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- About Section -->
-  <section id="about" class="py-14 bg-slate-50 section-padding">
-    <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-8 md:gap-10 items-center">
-      
-      <!-- Text -->
-      <div class="space-y-5 mobile-text-center md:text-left" data-aos="fade-right">
-        <span class="inline-flex items-center gap-2 bg-white border border-slate-200 text-slate-700 text-xs font-medium px-3 py-1 rounded-full shadow-sm mx-auto md:mx-0">
-          <i class="fas fa-info-circle text-primary"></i>
-          Tentang SasakTravel.id
-        </span>
-        <h2 class="text-2xl md:text-3xl font-bold text-slate-900">
-          Travel lokal yang ngerti Lombok luar–dalam.
-        </h2>
-        <p class="text-slate-600 text-sm md:text-base leading-relaxed">
-          SasakTravel.id berawal dari pemandu lokal yang sering diminta jemput dan antar tamu ke spot-spot
-          tersembunyi di Lombok. Dari situ kami sadar: banyak orang pengin ke Lombok, tapi malas ribet
-          urus transport, itinerary, dan komunikasi. Jadi kami satukan semua itu jadi satu layanan.
-        </p>
-        <p class="text-slate-600 text-sm md:text-base leading-relaxed">
-          Fokus kami: perjalanan rapi, harga jelas, dan pengalaman lokal yang asli (bukan cuma foto di pantai).
-        </p>
-
-        <div class="grid grid-cols-3 gap-4 pt-3 max-w-xs mx-auto md:mx-0">
-          <div data-aos="zoom-in" data-aos-delay="100">
-            <p class="text-2xl font-bold text-slate-900">10K+</p>
-            <p class="text-xs text-slate-500">Traveler dilayani</p>
-          </div>
-          <div data-aos="zoom-in" data-aos-delay="200">
-            <p class="text-2xl font-bold text-slate-900">50+</p>
-            <p class="text-xs text-slate-500">Destinasi Lombok</p>
-          </div>
-          <div data-aos="zoom-in" data-aos-delay="300">
-            <p class="text-2xl font-bold text-slate-900">24/7</p>
-            <p class="text-xs text-slate-500">Support lokal</p>
-          </div>
-        </div>
-
-        <div class="pt-2">
-          <a href="#contact" class="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-slate-900 mx-auto md:mx-0">
-            Hubungi tim kami
-            <i class="fas fa-arrow-right text-xs"></i>
-          </a>
-        </div>
-      </div>
-
-      <!-- Image / Illustration -->
-      <div class="bg-white border border-slate-100 rounded-2xl p-5 md:p-6 card-shadow card-hover" data-aos="fade-left">
-        <div class="aspect-[4/3] rounded-xl overflow-hidden mb-4">
-          <img src="https://images.unsplash.com/photo-1537640538966-79f369143f8f?auto=format&fit=crop&w=1200&q=80"
-               alt="Lombok Culture"
-               class="w-full h-full responsive-img">
-        </div>
-        <div class="flex items-start gap-3">
-          <div class="w-10 h-10 bg-primary/10 text-primary flex items-center justify-center rounded-lg flex-shrink-0">
-            <i class="fas fa-headset"></i>
-          </div>
-          <div>
-            <p class="text-sm font-semibold text-slate-900">Tim lokal & fast response</p>
-            <p class="text-xs text-slate-500 mt-1">
-              Kamu bisa tanya soal cuaca, rute, sampai rekomendasi kuliner Sasak langsung ke kami.
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-14 bg-slate-50 section-padding">
+      <div class="max-w-6xl mx-auto text-center">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-10" data-aos="fade-up">Apa kata mereka?</h2>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <article class="bg-white border border-slate-100 rounded-2xl p-6 card-shadow card-hover" data-aos="fade-up" data-aos-delay="100">
+            <div class="flex justify-center mb-3">
+              <i class="fas fa-star text-amber-400" aria-hidden="true"></i>
+              <i class="fas fa-star text-amber-400" aria-hidden="true"></i>
+              <i class="fas fa-star text-amber-400" aria-hidden="true"></i>
+              <i class="fas fa-star text-amber-400" aria-hidden="true"></i>
+              <i class="fas fa-star text-amber-400" aria-hidden="true"></i>
+            </div>
+            <p class="text-sm text-slate-600 mb-4">
+              Pengalaman terbaik! Driver-nya sabar banget dan itinerary-nya pas buat keluarga kami.
             </p>
-          </div>
+            <div class="flex flex-col items-center">
+              <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Foto Rina dari Jakarta" class="w-12 h-12 rounded-full object-cover mb-2">
+              <p class="text-sm font-semibold text-slate-800">Rina, Jakarta</p>
+            </div>
+          </article>
+          
+          <article class="bg-white border border-slate-100 rounded-2xl p-6 card-shadow card-hover" data-aos="fade-up" data-aos-delay="200">
+            <div class="flex justify-center mb-3">
+              <i class="fas fa-star text-amber-400" aria-hidden="true"></i>
+              <i class="fas fa-star text-amber-400" aria-hidden="true"></i>
+              <i class="fas fa-star text-amber-400" aria-hidden="true"></i>
+              <i class="fas fa-star text-amber-400" aria-hidden="true"></i>
+              <i class="fas fa-star text-amber-400" aria-hidden="true"></i>
+            </div>
+            <p class="text-sm text-slate-600 mb-4">
+              Guide-nya sangat berpengetahuan, membawa kami ke tempat-tempat yang tidak biasa dikunjungi turis.
+            </p>
+            <div class="flex flex-col items-center">
+              <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Foto Andi dari Surabaya" class="w-12 h-12 rounded-full object-cover mb-2">
+              <p class="text-sm font-semibold text-slate-800">Andi, Surabaya</p>
+            </div>
+          </article>
+          
+          <article class="bg-white border border-slate-100 rounded-2xl p-6 card-shadow card-hover" data-aos="fade-up" data-aos-delay="300">
+            <div class="flex justify-center mb-3">
+              <i class="fas fa-star text-amber-400" aria-hidden="true"></i>
+              <i class="fas fa-star text-amber-400" aria-hidden="true"></i>
+              <i class="fas fa-star text-amber-400" aria-hidden="true"></i>
+              <i class="fas fa-star text-amber-400" aria-hidden="true"></i>
+              <i class="fas fa-star text-amber-400" aria-hidden="true"></i>
+            </div>
+            <p class="text-sm text-slate-600 mb-4">
+              Mobil bersih dan sopir sangat ramah. Harga sesuai dengan pelayanan yang diberikan. Recommended!
+            </p>
+            <div class="flex flex-col items-center">
+              <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Foto Sari dari Bandung" class="w-12 h-12 rounded-full object-cover mb-2">
+              <p class="text-sm font-semibold text-slate-800">Sari, Bandung</p>
+            </div>
+          </article>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Destinations -->
-  <section id="destinations" class="py-14 bg-slate-50 section-padding">
-    <div class="max-w-6xl mx-auto">
-      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8 gap-4" data-aos="fade-up">
-        <div class="mobile-text-center sm:text-left">
-          <h2 class="text-2xl md:text-3xl font-bold text-slate-900">Destinasi Populer</h2>
-          <p class="text-slate-500 text-sm mt-1">Beberapa spot favorit di Lombok.</p>
-        </div>
-        <a href="packages.html" class="text-sm font-semibold text-primary hover:text-slate-900 mx-auto sm:mx-0">Lihat semua →</a>
-      </div>
-
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Card 1 -->
-        <div class="bg-white border border-slate-100 rounded-2xl overflow-hidden card-shadow card-hover" data-aos="fade-up" data-aos-delay="100">
-          <div class="h-40 overflow-hidden">
-            <img src="img/rinjani.jpeg" alt="Rinjani" class="w-full h-full responsive-img transition-transform duration-500 hover:scale-105" />
-          </div>
-          <div class="p-5 space-y-3">
-            <div class="flex items-start justify-between gap-2">
-              <h3 class="font-semibold text-slate-900">Trekking Rinjani</h3>
-              <span class="text-xs bg-emerald-50 text-emerald-700 px-2 py-1 rounded-md">3 Hari</span>
-            </div>
-            <p class="text-sm text-slate-600">Pendakian ke salah satu gunung terindah di Indonesia.</p>
-            <div class="flex items-center justify-between">
-              <span class="text-base font-semibold text-primary">$299</span>
-              <a href="detail/Gunung_Rinjani.html">
-                <button class="text-sm font-medium text-slate-700 hover:text-primary flex items-center gap-1">
-                Detail <i class="fas fa-arrow-right text-xs"></i>
-                </button>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 2 -->
-        <div class="bg-white border border-slate-100 rounded-2xl overflow-hidden card-shadow card-hover" data-aos="fade-up" data-aos-delay="200">
-          <div class="h-40 overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1483683804023-6ccdb62f86ef?auto=format&fit=crop&w=1200&q=80" alt="Gili" class="w-full h-full responsive-img transition-transform duration-500 hover:scale-105" />
-          </div>
-          <div class="p-5 space-y-3">
-            <div class="flex items-start justify-between gap-2">
-              <h3 class="font-semibold text-slate-900">Island Hopping Gili</h3>
-              <span class="text-xs bg-emerald-50 text-emerald-700 px-2 py-1 rounded-md">1 Hari</span>
-            </div>
-            <p class="text-sm text-slate-600">Snorkeling dan beach time di Gili T, Meno, Air.</p>
-            <div class="flex items-center justify-between">
-              <span class="text-base font-semibold text-primary">$120</span>
-              <button class="text-sm font-medium text-slate-700 hover:text-primary flex items-center gap-1">
-                Detail <i class="fas fa-arrow-right text-xs"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="bg-white border border-slate-100 rounded-2xl overflow-hidden card-shadow card-hover" data-aos="fade-up" data-aos-delay="300">
-          <div class="h-40 overflow-hidden">
-            <img src="img/pantai.jpg" alt="Pantai Lombok" class="w-full h-full responsive-img transition-transform duration-500 hover:scale-105" />
-          </div>
-          <div class="p-5 space-y-3">
-            <div class="flex items-start justify-between gap-2">
-              <h3 class="font-semibold text-slate-900">Pantai Selatan Lombok</h3>
-              <span class="text-xs bg-emerald-50 text-emerald-700 px-2 py-1 rounded-md">Private</span>
-            </div>
-            <p class="text-sm text-slate-600">Kuta, Tanjung Aan, Bukit Merese dengan view cantik.</p>
-            <div class="flex items-center justify-between">
-              <span class="text-base font-semibold text-primary">$90</span>
-              <button class="text-sm font-medium text-slate-700 hover:text-primary flex items-center gap-1">
-                Detail <i class="fas fa-arrow-right text-xs"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Sewa Mobil Section -->
-  <section id="rental" class="py-14 bg-white section-padding">
-    <div class="max-w-6xl mx-auto">
-      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8 gap-4" data-aos="fade-up">
-        <div class="mobile-text-center sm:text-left">
-          <h2 class="text-2xl md:text-3xl font-bold text-slate-900">Sewa Mobil di Lombok</h2>
-          <p class="text-slate-500 text-sm mt-1">Unit bersih, sopir ramah, dan opsi lepas kunci tersedia.</p>
-        </div>
-        <a href="#contact" class="text-sm font-semibold text-primary hover:text-slate-900 mx-auto sm:mx-0">Tanya ketersediaan →</a>
-      </div>
-
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Mobil 1 -->
-        <div class="bg-white border border-slate-100 rounded-2xl overflow-hidden card-shadow card-hover" data-aos="fade-up" data-aos-delay="100">
-          <div class="h-40 overflow-hidden">
-            <img src="img/avanza.jpg" 
-                 alt="Avanza / Xenia" 
-                 class="w-full h-full responsive-img transition-transform duration-500 hover:scale-105">
-          </div>
-          <div class="p-5 space-y-3">
-            <div class="flex items-start justify-between gap-2">
-              <h3 class="font-semibold text-slate-900">Avanza / Xenia</h3>
-              <span class="text-xs bg-emerald-50 text-emerald-700 px-2 py-1 rounded-md">6 penumpang</span>
-            </div>
-            <p class="text-sm text-slate-600">Pilihan hemat dan nyaman untuk keluarga kecil atau roadtrip santai.</p>
-            <div class="flex items-center justify-between pt-2">
-              <p class="text-lg font-semibold text-slate-900">Rp450.000<span class="text-xs text-slate-400"> /hari</span></p>
-              <a href="#contact" class="text-sm font-medium text-primary hover:text-slate-900">Booking</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Mobil 2 -->
-        <div class="bg-white border border-slate-100 rounded-2xl overflow-hidden card-shadow card-hover" data-aos="fade-up" data-aos-delay="200">
-          <div class="h-40 overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1606813903083-e6e35c02e4c5?auto=format&fit=crop&w=1200&q=80" 
-                 alt="Innova Reborn" 
-                 class="w-full h-full responsive-img transition-transform duration-500 hover:scale-105">
-          </div>
-          <div class="p-5 space-y-3">
-            <div class="flex items-start justify-between gap-2">
-              <h3 class="font-semibold text-slate-900">Innova Reborn</h3>
-              <span class="text-xs bg-emerald-50 text-emerald-700 px-2 py-1 rounded-md">6–7 penumpang</span>
-            </div>
-            <p class="text-sm text-slate-600">Kabin lega dan nyaman, cocok untuk tamu bisnis atau perjalanan keluarga.</p>
-            <div class="flex items-center justify-between pt-2">
-              <p class="text-lg font-semibold text-slate-900">Rp650.000<span class="text-xs text-slate-400"> /hari</span></p>
-              <a href="#contact" class="text-sm font-medium text-primary hover:text-slate-900">Booking</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Mobil 3 -->
-        <div class="bg-white border border-slate-100 rounded-2xl overflow-hidden card-shadow card-hover" data-aos="fade-up" data-aos-delay="300">
-          <div class="h-40 overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1624420190897-4fda62f77a41?auto=format&fit=crop&w=1200&q=80" 
-                 alt="Hiace / Elf" 
-                 class="w-full h-full responsive-img transition-transform duration-500 hover:scale-105">
-          </div>
-          <div class="p-5 space-y-3">
-            <div class="flex items-start justify-between gap-2">
-              <h3 class="font-semibold text-slate-900">Hiace / Elf</h3>
-              <span class="text-xs bg-emerald-50 text-emerald-700 px-2 py-1 rounded-md">10–15 penumpang</span>
-            </div>
-            <p class="text-sm text-slate-600">Ideal untuk rombongan wisata, outing kantor, atau acara keluarga besar.</p>
-            <div class="flex items-center justify-between pt-2">
-              <p class="text-lg font-semibold text-slate-900">Rp1.000.000<span class="text-xs text-slate-400"> /hari</span></p>
-              <a href="#contact" class="text-sm font-medium text-primary hover:text-slate-900">Booking</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <p class="text-xs text-slate-400 mt-5 text-center sm:text-left" data-aos="fade-up">
-        *Harga dapat berubah tergantung musim dan durasi. Tersedia opsi dengan sopir atau lepas kunci.
-      </p>
-    </div>
-  </section>
-
-  <!-- Testimonials -->
-  <section id="testimonials" class="py-14 bg-slate-50 section-padding">
-    <div class="max-w-6xl mx-auto text-center">
-      <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-10" data-aos="fade-up">Apa kata mereka?</h2>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="bg-white border border-slate-100 rounded-2xl p-6 card-shadow card-hover" data-aos="fade-up" data-aos-delay="100">
-          <div class="flex justify-center mb-3">
-            <i class="fas fa-star text-amber-400"></i>
-            <i class="fas fa-star text-amber-400"></i>
-            <i class="fas fa-star text-amber-400"></i>
-            <i class="fas fa-star text-amber-400"></i>
-            <i class="fas fa-star text-amber-400"></i>
-          </div>
-          <p class="text-sm text-slate-600 mb-4">
-            Pengalaman terbaik! Driver-nya sabar banget dan itinerary-nya pas buat keluarga kami.
+    <!-- FAQ Section -->
+    <section id="faq" class="py-14 bg-white border-t border-slate-100 section-padding">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-10" data-aos="fade-up">
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-900">Pertanyaan yang Sering Diajukan</h2>
+          <p class="text-slate-500 text-sm mt-2">
+            Berikut beberapa hal yang sering ditanyakan traveler sebelum ke Lombok.
           </p>
-          <div class="flex flex-col items-center">
-            <img src="https://randomuser.me/api/portraits/women/68.jpg" class="w-12 h-12 rounded-full object-cover mb-2">
-            <p class="text-sm font-semibold text-slate-800">Rina, Jakarta</p>
-          </div>
         </div>
-        
-        <div class="bg-white border border-slate-100 rounded-2xl p-6 card-shadow card-hover" data-aos="fade-up" data-aos-delay="200">
-          <div class="flex justify-center mb-3">
-            <i class="fas fa-star text-amber-400"></i>
-            <i class="fas fa-star text-amber-400"></i>
-            <i class="fas fa-star text-amber-400"></i>
-            <i class="fas fa-star text-amber-400"></i>
-            <i class="fas fa-star text-amber-400"></i>
-          </div>
-          <p class="text-sm text-slate-600 mb-4">
-            Guide-nya sangat berpengetahuan, membawa kami ke tempat-tempat yang tidak biasa dikunjungi turis.
-          </p>
-          <div class="flex flex-col items-center">
-            <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-12 h-12 rounded-full object-cover mb-2">
-            <p class="text-sm font-semibold text-slate-800">Andi, Surabaya</p>
-          </div>
-        </div>
-        
-        <div class="bg-white border border-slate-100 rounded-2xl p-6 card-shadow card-hover" data-aos="fade-up" data-aos-delay="300">
-          <div class="flex justify-center mb-3">
-            <i class="fas fa-star text-amber-400"></i>
-            <i class="fas fa-star text-amber-400"></i>
-            <i class="fas fa-star text-amber-400"></i>
-            <i class="fas fa-star text-amber-400"></i>
-            <i class="fas fa-star text-amber-400"></i>
-          </div>
-          <p class="text-sm text-slate-600 mb-4">
-            Mobil bersih dan sopir sangat ramah. Harga sesuai dengan pelayanan yang diberikan. Recommended!
-          </p>
-          <div class="flex flex-col items-center">
-            <img src="https://randomuser.me/api/portraits/women/44.jpg" class="w-12 h-12 rounded-full object-cover mb-2">
-            <p class="text-sm font-semibold text-slate-800">Sari, Bandung</p>
-          </div>
+
+        <div class="space-y-4" x-data="{ open: null }">
+          <!-- Q1 -->
+          <article class="border border-slate-200 rounded-xl bg-slate-50 card-shadow" x-data="{ id: 1 }" data-aos="fade-up" data-aos-delay="100">
+            <button @click="open === id ? open = null : open = id"
+                    class="w-full flex items-center justify-between px-5 py-4 text-left font-medium text-slate-800 hover:bg-slate-100 rounded-xl transition">
+              <span class="text-sm md:text-base">Apa saja layanan utama SasakTravel.id?</span>
+              <i class="fas" :class="open === id ? 'fa-chevron-up' : 'fa-chevron-down'" aria-hidden="true"></i>
+            </button>
+            <div x-show="open === id" x-collapse class="px-5 pb-4 text-sm text-slate-600">
+              Kami menyediakan layanan paket wisata, sewa mobil dengan sopir lokal, penjemputan bandara, serta itinerary custom
+              sesuai keinginan traveler. Semua dengan harga transparan dan tim lokal berpengalaman.
+            </div>
+          </article>
+
+          <!-- Q2 -->
+          <article class="border border-slate-200 rounded-xl bg-slate-50 card-shadow" x-data="{ id: 2 }" data-aos="fade-up" data-aos-delay="200">
+            <button @click="open === id ? open = null : open = id"
+                    class="w-full flex items-center justify-between px-5 py-4 text-left font-medium text-slate-800 hover:bg-slate-100 rounded-xl transition">
+              <span class="text-sm md:text-base">Apakah bisa request itinerary sendiri?</span>
+              <i class="fas" :class="open === id ? 'fa-chevron-up' : 'fa-chevron-down'" aria-hidden="true"></i>
+            </button>
+            <div x-show="open === id" x-collapse class="px-5 pb-4 text-sm text-slate-600">
+              Bisa banget! Kami bantu buatkan itinerary sesuai waktu dan preferensimu. Cukup kirim rencana hari dan aktivitas
+              yang diinginkan — tim kami akan susun rute terbaik.
+            </div>
+          </article>
+
+          <!-- Q3 -->
+          <article class="border border-slate-200 rounded-xl bg-slate-50 card-shadow" x-data="{ id: 3 }" data-aos="fade-up" data-aos-delay="300">
+            <button @click="open === id ? open = null : open = id"
+                    class="w-full flex items-center justify-between px-5 py-4 text-left font-medium text-slate-800 hover:bg-slate-100 rounded-xl transition">
+              <span class="text-sm md:text-base">Apakah harga sudah termasuk sopir dan BBM?</span>
+              <i class="fas" :class="open === id ? 'fa-chevron-up' : 'fa-chevron-down'" aria-hidden="true"></i>
+            </button>
+            <div x-show="open === id" x-collapse class="px-5 pb-4 text-sm text-slate-600">
+              Untuk paket sewa mobil dengan sopir, harga sudah termasuk sopir dan BBM untuk area sekitar Lombok Tengah dan Selatan.
+              Untuk area jauh seperti Rinjani, mungkin ada biaya tambahan kecil.
+            </div>
+          </article>
+
+          <!-- Q4 -->
+          <article class="border border-slate-200 rounded-xl bg-slate-50 card-shadow" x-data="{ id: 4 }" data-aos="fade-up" data-aos-delay="400">
+            <button @click="open === id ? open = null : open = id"
+                    class="w-full flex items-center justify-between px-5 py-4 text-left font-medium text-slate-800 hover:bg-slate-100 rounded-xl transition">
+              <span class="text-sm md:text-base">Bagaimana cara pembayaran?</span>
+              <i class="fas" :class="open === id ? 'fa-chevron-up' : 'fa-chevron-down'" aria-hidden="true"></i>
+            </button>
+            <div x-show="open === id" x-collapse class="px-5 pb-4 text-sm text-slate-600">
+              Pembayaran bisa via transfer bank, e-wallet (Dana, OVO, GoPay), atau tunai saat bertemu driver. Untuk booking paket,
+              biasanya cukup DP 30% dulu, sisanya saat perjalanan dimulai.
+            </div>
+          </article>
+
+          <!-- Q5 -->
+          <article class="border border-slate-200 rounded-xl bg-slate-50 card-shadow" x-data="{ id: 5 }" data-aos="fade-up" data-aos-delay="500">
+            <button @click="open === id ? open = null : open = id"
+                    class="w-full flex items-center justify-between px-5 py-4 text-left font-medium text-slate-800 hover:bg-slate-100 rounded-xl transition">
+              <span class="text-sm md:text-base">Apakah bisa jemput di bandara atau pelabuhan?</span>
+              <i class="fas" :class="open === id ? 'fa-chevron-up' : 'fa-chevron-down'" aria-hidden="true"></i>
+            </button>
+            <div x-show="open === id" x-collapse class="px-5 pb-4 text-sm text-slate-600">
+              Tentu! Kami bisa menjemput dari Bandara Internasional Lombok atau pelabuhan Lembar. Cukup kirim waktu dan lokasi
+              kedatangan, driver kami akan standby dengan papan nama.
+            </div>
+          </article>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- FAQ Section -->
-  <section id="faq" class="py-14 bg-white border-t border-slate-100 section-padding">
-    <div class="max-w-5xl mx-auto">
-      <div class="text-center mb-10" data-aos="fade-up">
-        <h2 class="text-2xl md:text-3xl font-bold text-slate-900">Pertanyaan yang Sering Diajukan</h2>
-        <p class="text-slate-500 text-sm mt-2">
-          Berikut beberapa hal yang sering ditanyakan traveler sebelum ke Lombok.
-        </p>
-      </div>
-
-      <div class="space-y-4" x-data="{ open: null }">
-        <!-- Q1 -->
-        <div class="border border-slate-200 rounded-xl bg-slate-50 card-shadow" x-data="{ id: 1 }" data-aos="fade-up" data-aos-delay="100">
-          <button @click="open === id ? open = null : open = id"
-                  class="w-full flex items-center justify-between px-5 py-4 text-left font-medium text-slate-800 hover:bg-slate-100 rounded-xl transition">
-            <span class="text-sm md:text-base">Apa saja layanan utama SasakTravel.id?</span>
-            <i class="fas" :class="open === id ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
-          </button>
-          <div x-show="open === id" x-collapse class="px-5 pb-4 text-sm text-slate-600">
-            Kami menyediakan layanan paket wisata, sewa mobil dengan sopir lokal, penjemputan bandara, serta itinerary custom
-            sesuai keinginan traveler. Semua dengan harga transparan dan tim lokal berpengalaman.
-          </div>
-        </div>
-
-        <!-- Q2 -->
-        <div class="border border-slate-200 rounded-xl bg-slate-50 card-shadow" x-data="{ id: 2 }" data-aos="fade-up" data-aos-delay="200">
-          <button @click="open === id ? open = null : open = id"
-                  class="w-full flex items-center justify-between px-5 py-4 text-left font-medium text-slate-800 hover:bg-slate-100 rounded-xl transition">
-            <span class="text-sm md:text-base">Apakah bisa request itinerary sendiri?</span>
-            <i class="fas" :class="open === id ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
-          </button>
-          <div x-show="open === id" x-collapse class="px-5 pb-4 text-sm text-slate-600">
-            Bisa banget! Kami bantu buatkan itinerary sesuai waktu dan preferensimu. Cukup kirim rencana hari dan aktivitas
-            yang diinginkan — tim kami akan susun rute terbaik.
-          </div>
-        </div>
-
-        <!-- Q3 -->
-        <div class="border border-slate-200 rounded-xl bg-slate-50 card-shadow" x-data="{ id: 3 }" data-aos="fade-up" data-aos-delay="300">
-          <button @click="open === id ? open = null : open = id"
-                  class="w-full flex items-center justify-between px-5 py-4 text-left font-medium text-slate-800 hover:bg-slate-100 rounded-xl transition">
-            <span class="text-sm md:text-base">Apakah harga sudah termasuk sopir dan BBM?</span>
-            <i class="fas" :class="open === id ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
-          </button>
-          <div x-show="open === id" x-collapse class="px-5 pb-4 text-sm text-slate-600">
-            Untuk paket sewa mobil dengan sopir, harga sudah termasuk sopir dan BBM untuk area sekitar Lombok Tengah dan Selatan.
-            Untuk area jauh seperti Rinjani, mungkin ada biaya tambahan kecil.
-          </div>
-        </div>
-
-        <!-- Q4 -->
-        <div class="border border-slate-200 rounded-xl bg-slate-50 card-shadow" x-data="{ id: 4 }" data-aos="fade-up" data-aos-delay="400">
-          <button @click="open === id ? open = null : open = id"
-                  class="w-full flex items-center justify-between px-5 py-4 text-left font-medium text-slate-800 hover:bg-slate-100 rounded-xl transition">
-            <span class="text-sm md:text-base">Bagaimana cara pembayaran?</span>
-            <i class="fas" :class="open === id ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
-          </button>
-          <div x-show="open === id" x-collapse class="px-5 pb-4 text-sm text-slate-600">
-            Pembayaran bisa via transfer bank, e-wallet (Dana, OVO, GoPay), atau tunai saat bertemu driver. Untuk booking paket,
-            biasanya cukup DP 30% dulu, sisanya saat perjalanan dimulai.
-          </div>
-        </div>
-
-        <!-- Q5 -->
-        <div class="border border-slate-200 rounded-xl bg-slate-50 card-shadow" x-data="{ id: 5 }" data-aos="fade-up" data-aos-delay="500">
-          <button @click="open === id ? open = null : open = id"
-                  class="w-full flex items-center justify-between px-5 py-4 text-left font-medium text-slate-800 hover:bg-slate-100 rounded-xl transition">
-            <span class="text-sm md:text-base">Apakah bisa jemput di bandara atau pelabuhan?</span>
-            <i class="fas" :class="open === id ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
-          </button>
-          <div x-show="open === id" x-collapse class="px-5 pb-4 text-sm text-slate-600">
-            Tentu! Kami bisa menjemput dari Bandara Internasional Lombok atau pelabuhan Lembar. Cukup kirim waktu dan lokasi
-            kedatangan, driver kami akan standby dengan papan nama.
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <!-- Footer -->
-  <footer class="pt-12 pb-8 bg-white border-t border-slate-200 mt-10 section-padding">
+  <footer class="pt-12 pb-8 bg-white border-t border-slate-200 mt-10 section-padding" id="footer">
     <div class="max-w-6xl mx-auto">
       <div class="grid md:grid-cols-4 gap-8 mb-10">
-        <!-- Brand -->
+        <!-- Brand Information -->
         <div class="md:col-span-2 space-y-3" data-aos="fade-up">
           <div class="flex items-center gap-2">
             <div class="w-9 h-9 bg-primary text-white rounded-lg flex items-center justify-center">
-              <i class="fas fa-map-marked-alt text-sm"></i>
+              <i class="fas fa-map-marked-alt text-sm" aria-hidden="true"></i>
             </div>
             <span class="text-lg font-semibold text-slate-900">SasakTravel.id</span>
           </div>
@@ -628,38 +742,40 @@
           </ul>
         </div>
 
-        <!-- Contact -->
+        <!-- Contact Information -->
         <div data-aos="fade-up" data-aos-delay="200">
           <h3 class="text-sm font-semibold text-slate-900 mb-3">Kontak & Jam</h3>
-          <ul class="space-y-2 text-sm text-slate-500">
-            <li class="flex items-center gap-2">
-              <i class="fas fa-phone text-primary text-xs"></i>
-              <span>+62 812-0000-0000</span>
-            </li>
-            <li class="flex items-center gap-2">
-              <i class="fas fa-envelope text-primary text-xs"></i>
-              <span>hello@sasaktravel.id</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <i class="fas fa-clock text-primary text-xs mt-1"></i>
-              <span>Senin – Minggu<br>08.00 – 21.00 WITA</span>
-            </li>
-          </ul>
+          <address class="not-italic">
+            <ul class="space-y-2 text-sm text-slate-500">
+              <li class="flex items-center gap-2">
+                <i class="fas fa-phone text-primary text-xs" aria-hidden="true"></i>
+                <span>+62 812-0000-0000</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="fas fa-envelope text-primary text-xs" aria-hidden="true"></i>
+                <span>hello@sasaktravel.id</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fas fa-clock text-primary text-xs mt-1" aria-hidden="true"></i>
+                <span>Senin – Minggu<br>08.00 – 21.00 WITA</span>
+              </li>
+            </ul>
+          </address>
           <div class="flex gap-3 mt-3">
-            <a href="#" class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 hover:bg-primary hover:text-white transition">
-              <i class="fab fa-instagram text-sm"></i>
+            <a href="#" class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 hover:bg-primary hover:text-white transition" aria-label="Instagram">
+              <i class="fab fa-instagram text-sm" aria-hidden="true"></i>
             </a>
-            <a href="#" class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 hover:bg-primary hover:text-white transition">
-              <i class="fab fa-facebook-f text-sm"></i>
+            <a href="#" class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 hover:bg-primary hover:text-white transition" aria-label="Facebook">
+              <i class="fab fa-facebook-f text-sm" aria-hidden="true"></i>
             </a>
-            <a href="#" class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 hover:bg-primary hover:text-white transition">
-              <i class="fab fa-whatsapp text-sm"></i>
+            <a href="#" class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 hover:bg-primary hover:text-white transition" aria-label="WhatsApp">
+              <i class="fab fa-whatsapp text-sm" aria-hidden="true"></i>
             </a>
           </div>
         </div>
       </div>
 
-      <!-- Bottom -->
+      <!-- Copyright -->
       <div class="border-t border-slate-200 pt-5 flex flex-col md:flex-row items-center justify-between gap-4" data-aos="fade-up">
         <p class="text-xs text-slate-500">© <span id="year"></span> SasakTravel.id. All rights reserved.</p>
         <p class="text-xs text-slate-400">Made for travelers to Lombok • Local guided trips</p>
@@ -667,14 +783,14 @@
     </div>
   </footer>
 
+  <!-- Scripts -->
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
   <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-  <!-- AOS JS -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    // Initialize AOS
+    // Initialize AOS 
     AOS.init({
       duration: 800,
       easing: 'ease-in-out',

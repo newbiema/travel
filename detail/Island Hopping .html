@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trekking Gunung Rinjani - Detail Destinasi</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- AOS CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    .nav-blur {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    .card-shadow {
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+    .card-hover {
+      transition: all 0.3s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    }
+    .responsive-img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+    @media (max-width: 768px) {
+      .section-padding {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+      .mobile-text-center {
+        text-align: center;
+      }
+      .mobile-full-width {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body class="font-sans bg-slate-50 text-slate-800" x-data="{ mobileOpen: false, activeTab: 'overview' }">
+
+  <!-- Navbar -->
+  <nav class="fixed top-0 inset-x-0 z-50 nav-blur border-b border-slate-200 shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex h-16 items-center justify-between">
+        <!-- Logo -->
+        <a href="../index.html" class="flex items-center gap-2">
+          <div class="w-9 h-9 bg-primary text-white rounded-lg flex items-center justify-center">
+            <i class="fas fa-map-marked-alt text-sm"></i>
+          </div>
+          <span class="text-lg font-semibold text-slate-900 tracking-tight">SasakTravel.id</span>
+        </a>
+
+        <!-- Desktop menu -->
+        <div class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600">
+          <a href="../index.html" class="hover:text-primary transition">Home</a>
+          <a href="../index.html#destinations" class="hover:text-primary transition">Destinasi</a>
+          <a href="../index.html#packages" class="hover:text-primary transition">Paket</a>
+          <a href="../index.html#rental" class="hover:text-primary transition">Sewa Mobil</a>
+          <a href="../index.html#about" class="hover:text-primary transition">Tentang</a>
+          <a href="../index.html#contact" class="hover:text-primary transition">Kontak</a>
+        </div>
+
+        <!-- CTA -->
+        <div class="hidden md:flex">
+          <a href="#booking" class="inline-flex items-center gap-2 bg-primary text-white text-sm font-semibold px-4 py-2 rounded-lg hover:bg-slate-900 transition shadow-md">
+            <i class="fas fa-calendar-check text-xs"></i>
+            Book Now
+          </a>
+        </div>
+
+        <!-- Mobile button -->
+        <button @click="mobileOpen = !mobileOpen" class="md:hidden p-2 rounded-lg hover:bg-slate-100">
+          <i class="fas fa-bars text-slate-700" x-show="!mobileOpen"></i>
+          <i class="fas fa-times text-slate-700" x-show="mobileOpen"></i>
+        </button>
+      </div>
+
+      <!-- Mobile menu -->
+      <div x-show="mobileOpen" x-transition class="md:hidden pb-4 space-y-2 bg-white rounded-lg mt-2 shadow-lg">
+        <a href="../index.html" class="block py-3 px-4 text-slate-700 hover:text-primary hover:bg-slate-50 rounded-md" @click="mobileOpen = false">Home</a>
+        <a href="../index.html#destinations" class="block py-3 px-4 text-slate-700 hover:text-primary hover:bg-slate-50 rounded-md" @click="mobileOpen = false">Destinasi</a>
+        <a href="../index.html#packages" class="block py-3 px-4 text-slate-700 hover:text-primary hover:bg-slate-50 rounded-md" @click="mobileOpen = false">Paket</a>
+        <a href="../index.html#rental" class="block py-3 px-4 text-slate-700 hover:text-primary hover:bg-slate-50 rounded-md" @click="mobileOpen = false">Sewa Mobil</a>
+        <a href="../index.html#about" class="block py-3 px-4 text-slate-700 hover:text-primary hover:bg-slate-50 rounded-md" @click="mobileOpen = false">Tentang</a>
+        <a href="../index.html#contact" class="block py-3 px-4 text-slate-700 hover:text-primary hover:bg-slate-50 rounded-md" @click="mobileOpen = false">Kontak</a>
+        <div class="pt-2 px-4">
+          <a href="" class="inline-flex items-center justify-center gap-2 bg-primary text-white text-sm font-semibold px-4 py-3 rounded-lg w-full" @click="mobileOpen = false">
+            <i class="fas fa-calendar-check text-xs"></i> Book Now
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Breadcrumb -->
+  <div class="pt-28 pb-6 section-padding bg-white">
+    <div class="max-w-6xl mx-auto">
+      <nav class="flex text-sm text-slate-500 mb-4">
+        <a href="../index.html" class="hover:text-primary">Home</a>
+        <span class="mx-2">/</span>
+        <a href="../index.html#destinations" class="hover:text-primary">Destinasi</a>
+        <span class="mx-2">/</span>
+        <span class="text-slate-700 font-medium">Trekking Rinjani</span>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Hero Detail -->
+  <section class="py-8 bg-white">
+    <div class="max-w-6xl mx-auto section-padding">
+      <div class="grid lg:grid-cols-2 gap-8 items-start">
+        <!-- Gallery -->
+        <div class="space-y-4">
+          <div class="rounded-2xl overflow-hidden">
+            <img src="../img/rinjani.jpeg" 
+                 alt="Gunung Rinjani" 
+                 class="w-full h-80 md:h-96 object-cover rounded-2xl">
+          </div>
+          <div class="grid grid-cols-3 gap-4">
+            <div class="rounded-xl overflow-hidden cursor-pointer">
+              <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=500&q=80" 
+                   alt="Rinjani 1" 
+                   class="w-full h-24 object-cover hover:opacity-80 transition">
+            </div>
+            <div class="rounded-xl overflow-hidden cursor-pointer">
+              <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=500&q=80" 
+                   alt="Rinjani 2" 
+                   class="w-full h-24 object-cover hover:opacity-80 transition">
+            </div>
+            <div class="rounded-xl overflow-hidden cursor-pointer">
+              <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=500&q=80" 
+                   alt="Rinjani 3" 
+                   class="w-full h-24 object-cover hover:opacity-80 transition">
+            </div>
+          </div>
+        </div>
+
+        <!-- Info -->
+        <div class="space-y-6">
+          <div>
+            <span class="inline-flex items-center gap-2 bg-emerald-50 text-emerald-700 text-xs font-medium px-3 py-1 rounded-full">
+              <i class="fas fa-clock"></i> 3 Hari 2 Malam
+            </span>
+            <h1 class="text-3xl md:text-4xl font-bold text-slate-900 mt-3">Trekking Gunung Rinjani</h1>
+            <p class="text-slate-600 mt-2">Pendakian ke puncak gunung berapi tertinggi kedua di Indonesia dengan danau kawah yang memukau.</p>
+          </div>
+
+          <div class="flex items-center gap-4 text-sm text-slate-600">
+            <div class="flex items-center gap-2">
+              <i class="fas fa-map-marker-alt text-primary"></i>
+              <span>Lombok, NTB</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i class="fas fa-users text-primary"></i>
+              <span>Max 10 orang</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i class="fas fa-star text-amber-400"></i>
+              <span>4.9 (128 reviews)</span>
+            </div>
+          </div>
+
+          <div class="bg-slate-50 rounded-2xl p-6 space-y-4">
+            <div class="flex justify-between items-center">
+              <span class="text-2xl font-bold text-slate-900">$299</span>
+              <span class="text-sm text-slate-500">per orang</span>
+            </div>
+            
+            <div class="space-y-3">
+              <div class="flex items-center gap-3">
+                <i class="fas fa-check text-emerald-500"></i>
+                <span class="text-sm">Guide lokal berpengalaman</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <i class="fas fa-check text-emerald-500"></i>
+                <span class="text-sm">Tenda dan perlengkapan camping</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <i class="fas fa-check text-emerald-500"></i>
+                <span class="text-sm">Makan selama pendakian</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <i class="fas fa-check text-emerald-500"></i>
+                <span class="text-sm">Izin pendakian & asuransi</span>
+              </div>
+            </div>
+            <a href="https://wa.me/+6285943618779?text=Saya ingin booking Trekking Gunung Rinjani" class="w-full bg-primary text-white font-semibold py-3 rounded-lg hover:bg-slate-900 transition shadow-md inline-block text-center">
+              Book Now
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tabs Section -->
+  <section class="py-12 bg-white">
+    <div class="max-w-6xl mx-auto section-padding">
+      <!-- Tab Navigation -->
+      <div class="border-b border-slate-200 mb-8">
+        <div class="flex space-x-8">
+          <button @click="activeTab = 'overview'" 
+                  class="pb-4 px-1 font-medium text-sm border-b-2 transition"
+                  :class="activeTab === 'overview' ? 'border-primary text-primary' : 'border-transparent text-slate-500 hover:text-slate-700'">
+            Overview
+          </button>
+          <button @click="activeTab = 'itinerary'" 
+                  class="pb-4 px-1 font-medium text-sm border-b-2 transition"
+                  :class="activeTab === 'itinerary' ? 'border-primary text-primary' : 'border-transparent text-slate-500 hover:text-slate-700'">
+            Itinerary
+          </button>
+          <button @click="activeTab = 'included'" 
+                  class="pb-4 px-1 font-medium text-sm border-b-2 transition"
+                  :class="activeTab === 'included' ? 'border-primary text-primary' : 'border-transparent text-slate-500 hover:text-slate-700'">
+            Yang Termasuk
+          </button>
+          <button @click="activeTab = 'reviews'" 
+                  class="pb-4 px-1 font-medium text-sm border-b-2 transition"
+                  :class="activeTab === 'reviews' ? 'border-primary text-primary' : 'border-transparent text-slate-500 hover:text-slate-700'">
+            Reviews
+          </button>
+        </div>
+      </div>
+
+      <!-- Tab Content -->
+      <div>
+        <!-- Overview Tab -->
+        <div x-show="activeTab === 'overview'" class="space-y-6">
+          <h3 class="text-xl font-bold text-slate-900">Tentang Pendakian Rinjani</h3>
+          <p class="text-slate-600 leading-relaxed">
+            Gunung Rinjani adalah gunung berapi aktif yang terletak di Pulau Lombok, Nusa Tenggara Barat. 
+            Dengan ketinggian 3.726 mdpl, Rinjani merupakan gunung tertinggi kedua di Indonesia. Pendakian 
+            ini menawarkan pengalaman tak terlupakan dengan pemandangan danau kawah Segara Anak yang menakjubkan.
+          </p>
+          
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="space-y-4">
+              <h4 class="font-semibold text-slate-900">Highlight Perjalanan</h4>
+              <ul class="space-y-3 text-slate-600">
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-mountain text-primary mt-1"></i>
+                  <span>Mendaki ke puncak tertinggi Gunung Rinjani</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-water text-primary mt-1"></i>
+                  <span>Menikmati pemandangan Danau Segara Anak</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-fire text-primary mt-1"></i>
+                  <span>Mandi air panas alami di sekitar kawah</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-campground text-primary mt-1"></i>
+                  <span>Camping di tepi danau kawah</span>
+                </li>
+              </ul>
+            </div>
+            
+            <div class="space-y-4">
+              <h4 class="font-semibold text-slate-900">Tingkat Kesulitan</h4>
+              <div class="space-y-3">
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-slate-600">Kebugaran</span>
+                  <div class="flex gap-1">
+                    <i class="fas fa-running text-primary"></i>
+                    <i class="fas fa-running text-primary"></i>
+                    <i class="fas fa-running text-primary"></i>
+                    <i class="fas fa-running text-slate-300"></i>
+                    <i class="fas fa-running text-slate-300"></i>
+                  </div>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-slate-600">Teknis</span>
+                  <div class="flex gap-1">
+                    <i class="fas fa-hiking text-primary"></i>
+                    <i class="fas fa-hiking text-primary"></i>
+                    <i class="fas fa-hiking text-slate-300"></i>
+                    <i class="fas fa-hiking text-slate-300"></i>
+                    <i class="fas fa-hiking text-slate-300"></i>
+                  </div>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-slate-600">Durasi</span>
+                  <div class="flex gap-1">
+                    <i class="fas fa-clock text-primary"></i>
+                    <i class="fas fa-clock text-primary"></i>
+                    <i class="fas fa-clock text-primary"></i>
+                    <i class="fas fa-clock text-slate-300"></i>
+                    <i class="fas fa-clock text-slate-300"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Itinerary Tab -->
+        <div x-show="activeTab === 'itinerary'" class="space-y-6">
+          <h3 class="text-xl font-bold text-slate-900">Rencana Perjalanan 3 Hari</h3>
+          
+          <div class="space-y-6">
+            <!-- Day 1 -->
+            <div class="bg-slate-50 rounded-2xl p-6">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center text-sm font-bold">1</div>
+                <h4 class="font-semibold text-slate-900">Hari 1: Pendakian ke Pos 3</h4>
+              </div>
+              <div class="space-y-3 text-slate-600">
+                <div class="flex items-start gap-3">
+                  <i class="fas fa-sun text-amber-500 mt-1"></i>
+                  <div>
+                    <span class="font-medium">08:00</span> - Penjemputan di hotel & briefing
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <i class="fas fa-hiking text-primary mt-1"></i>
+                  <div>
+                    <span class="font-medium">10:00</span> - Start pendakian dari Sembalun
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <i class="fas fa-utensils text-primary mt-1"></i>
+                  <div>
+                    <span class="font-medium">12:30</span> - Makan siang di Pos 2
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <i class="fas fa-campground text-primary mt-1"></i>
+                  <div>
+                    <span class="font-medium">16:00</span> - Tiba di Pos 3 & setup camp
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Day 2 -->
+            <div class="bg-slate-50 rounded-2xl p-6">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center text-sm font-bold">2</div>
+                <h4 class="font-semibold text-slate-900">Hari 2: Summit Attack & Turun ke Danau</h4>
+              </div>
+              <div class="space-y-3 text-slate-600">
+                <div class="flex items-start gap-3">
+                  <i class="fas fa-moon text-indigo-500 mt-1"></i>
+                  <div>
+                    <span class="font-medium">02:00</span> - Start summit attack
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <i class="fas fa-mountain text-primary mt-1"></i>
+                  <div>
+                    <span class="font-medium">06:00</span> - Sunrise di puncak Rinjani
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <i class="fas fa-water text-primary mt-1"></i>
+                  <div>
+                    <span class="font-medium">14:00</span> - Turun ke Danau Segara Anak
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Day 3 -->
+            <div class="bg-slate-50 rounded-2xl p-6">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center text-sm font-bold">3</div>
+                <h4 class="font-semibold text-slate-900">Hari 3: Turun & Transfer Kembali</h4>
+              </div>
+              <div class="space-y-3 text-slate-600">
+                <div class="flex items-start gap-3">
+                  <i class="fas fa-sun text-amber-500 mt-1"></i>
+                  <div>
+                    <span class="font-medium">07:00</span> - Sarapan & persiapan turun
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <i class="fas fa-hiking text-primary mt-1"></i>
+                  <div>
+                    <span class="font-medium">08:00</span> - Start turun via Torean
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <i class="fas fa-car text-primary mt-1"></i>
+                  <div>
+                    <span class="font-medium">15:00</span> - Tiba di base & transfer ke hotel
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Included Tab -->
+        <div x-show="activeTab === 'included'" class="space-y-6">
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="space-y-4">
+              <h4 class="font-semibold text-slate-900">Yang Termasuk</h4>
+              <ul class="space-y-3 text-slate-600">
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-check text-emerald-500 mt-1"></i>
+                  <span>Guide lokal berpengalaman</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-check text-emerald-500 mt-1"></i>
+                  <span>Porter untuk barang-barang berat</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-check text-emerald-500 mt-1"></i>
+                  <span>Tenda, sleeping bag, & matras</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-check text-emerald-500 mt-1"></i>
+                  <span>Makan 3x sehari selama pendakian</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-check text-emerald-500 mt-1"></i>
+                  <span>Air mineral & snack</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-check text-emerald-500 mt-1"></i>
+                  <span>Izin pendakian & asuransi</span>
+                </li>
+              </ul>
+            </div>
+            
+            <div class="space-y-4">
+              <h4 class="font-semibold text-slate-900">Tidak Termasuk</h4>
+              <ul class="space-y-3 text-slate-600">
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-times text-red-500 mt-1"></i>
+                  <span>Pengeluaran pribadi</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-times text-red-500 mt-1"></i>
+                  <span>Tips untuk guide & porter</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-times text-red-500 mt-1"></i>
+                  <span>Biaya tambahan jika cancel</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fas fa-times text-red-500 mt-1"></i>
+                  <span>Penginapan sebelum/sesudah pendakian</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Reviews Tab -->
+        <div x-show="activeTab === 'reviews'" class="space-y-6">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="text-center">
+              <div class="text-3xl font-bold text-slate-900">4.9</div>
+              <div class="flex justify-center text-amber-400 text-sm">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <div class="text-xs text-slate-500 mt-1">128 reviews</div>
+            </div>
+          </div>
+
+          <!-- Review List -->
+          <div class="space-y-6">
+            <!-- Review 1 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6">
+              <div class="flex items-start justify-between mb-4">
+                <div class="flex items-center gap-3">
+                  <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-10 h-10 rounded-full object-cover">
+                  <div>
+                    <h5 class="font-semibold text-slate-900">Ahmad Wijaya</h5>
+                    <div class="flex items-center gap-1 text-sm text-amber-400">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+                  </div>
+                </div>
+                <span class="text-sm text-slate-500">2 minggu lalu</span>
+              </div>
+              <p class="text-slate-600">
+                Pengalaman yang luar biasa! Guide-nya sangat profesional dan sabar. Pemandangan dari puncak benar-benar 
+                membuat semua lelah terbayar. Recommended banget untuk yang mau challenge diri!
+              </p>
+            </div>
+
+            <!-- Review 2 -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6">
+              <div class="flex items-start justify-between mb-4">
+                <div class="flex items-center gap-3">
+                  <img src="https://randomuser.me/api/portraits/women/44.jpg" class="w-10 h-10 rounded-full object-cover">
+                  <div>
+                    <h5 class="font-semibold text-slate-900">Sarah Putri</h5>
+                    <div class="flex items-center gap-1 text-sm text-amber-400">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+                  </div>
+                </div>
+                <span class="text-sm text-slate-500">1 bulan lalu</span>
+              </div>
+              <p class="text-slate-600">
+                Pertama kali naik gunung dan pilih Rinjani. Tim SasakTravel bikin perjalanan jadi aman dan nyaman. 
+                Makanannya enak-enak, tenda bersih, dan porter sangat helpful. Terima kasih!
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-14 bg-primary">
+    <div class="max-w-6xl mx-auto section-padding text-center">
+      <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">Siap untuk Petualangan?</h2>
+      <p class="text-blue-100 mb-8 max-w-2xl mx-auto">
+        Jangan lewatkan pengalaman mendaki gunung tertinggi kedua di Indonesia. Booking sekarang dan dapatkan penawaran spesial!
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#booking" class="inline-flex items-center justify-center gap-2 bg-white text-primary font-semibold px-6 py-3 rounded-lg hover:bg-slate-100 transition shadow-md">
+          <i class="fas fa-calendar-check"></i>
+          Book Sekarang
+        </a>
+        <a href="index.html#destinations" class="inline-flex items-center justify-center gap-2 bg-transparent border border-white text-white font-semibold px-6 py-3 rounded-lg hover:bg-white hover:text-primary transition">
+          <i class="fas fa-arrow-left"></i>
+          Lihat Destinasi Lain
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="pt-12 pb-8 bg-white border-t border-slate-200">
+    <div class="max-w-6xl mx-auto section-padding">
+      <div class="grid md:grid-cols-4 gap-8 mb-10">
+        <!-- Brand -->
+        <div class="md:col-span-2 space-y-3">
+          <div class="flex items-center gap-2">
+            <div class="w-9 h-9 bg-primary text-white rounded-lg flex items-center justify-center">
+              <i class="fas fa-map-marked-alt text-sm"></i>
+            </div>
+            <span class="text-lg font-semibold text-slate-900">SasakTravel.id</span>
+          </div>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            Local travel partner untuk jelajah Lombok: paket wisata, sewa mobil, dan itinerary custom.
+          </p>
+          <p class="text-xs text-slate-400">
+            Office: Mataram, Lombok – Nusa Tenggara Barat
+          </p>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h3 class="text-sm font-semibold text-slate-900 mb-3">Navigasi</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="index.html" class="text-slate-500 hover:text-primary transition">Home</a></li>
+            <li><a href="index.html#destinations" class="text-slate-500 hover:text-primary transition">Destinasi</a></li>
+            <li><a href="index.html#rental" class="text-slate-500 hover:text-primary transition">Sewa Mobil</a></li>
+            <li><a href="index.html#about" class="text-slate-500 hover:text-primary transition">Tentang</a></li>
+            <li><a href="index.html#faq" class="text-slate-500 hover:text-primary transition">FAQ</a></li>
+            <li><a href="index.html#contact" class="text-slate-500 hover:text-primary transition">Kontak</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div>
+          <h3 class="text-sm font-semibold text-slate-900 mb-3">Kontak & Jam</h3>
+          <ul class="space-y-2 text-sm text-slate-500">
+            <li class="flex items-center gap-2">
+              <i class="fas fa-phone text-primary text-xs"></i>
+              <span>+62 812-0000-0000</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <i class="fas fa-envelope text-primary text-xs"></i>
+              <span>hello@sasaktravel.id</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <i class="fas fa-clock text-primary text-xs mt-1"></i>
+              <span>Senin – Minggu<br>08.00 – 21.00 WITA</span>
+            </li>
+          </ul>
+          <div class="flex gap-3 mt-3">
+            <a href="#" class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 hover:bg-primary hover:text-white transition">
+              <i class="fab fa-instagram text-sm"></i>
+            </a>
+            <a href="#" class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 hover:bg-primary hover:text-white transition">
+              <i class="fab fa-facebook-f text-sm"></i>
+            </a>
+            <a href="#" class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 hover:bg-primary hover:text-white transition">
+              <i class="fab fa-whatsapp text-sm"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom -->
+      <div class="border-t border-slate-200 pt-5 flex flex-col md:flex-row items-center justify-between gap-4">
+        <p class="text-xs text-slate-500">© <span id="year"></span> SasakTravel.id. All rights reserved.</p>
+        <p class="text-xs text-slate-400">Made for travelers to Lombok • Local guided trips</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+  <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  <script src="../tailwind.config.js"></script>
+  <!-- AOS JS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: true,
+      offset: 100
+    });
+  </script>
+</body>
+</html>
