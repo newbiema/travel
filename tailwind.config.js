@@ -1,3 +1,5 @@
+
+
     tailwind.config = {
       theme: {
         extend: {
@@ -6,7 +8,7 @@
             accent: '#0D9488'
           },
           fontFamily: {
-            sans: ['Inter', 'system-ui', 'sans-serif']
+            sans: ['Plus Jakarta Sans', 'Inter', 'system-ui', 'sans-serif']
           }
         }
       }
