@@ -6,96 +6,22 @@
   <meta name="description" content="Afwa Transport - Discover Lombok. Paket wisata, sewa mobil, dan itinerary custom untuk menjelajahi keindahan Lombok.">
   <meta name="keywords" content="Lombok, wisata, travel, Sasak, Gili, Rinjani, sewa mobil">
   <meta name="author" content="Afwa Transport">
-  <meta name="google-site-verification" content="ggopCQvlXHLXKg-ZsjjuVkw3cZAy8bCjph4ouodDlo0" />
+  <meta name="google-site-verification" content="ggopCQvlXHLXKg-ZsjjuVkw3cZAy8bCjph4ouodDlo0"/>
 
   <title>Afwa Transport - Discover Lombok</title>
   
   <!-- External Resources -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="./css/output.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
-  
-  
-
-  
-  <!-- Custom Styles -->
-  <style>
-    /* Navbar with glass effect */
-    .nav-blur {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-    }
-    
-    /* Smooth scrolling */
-    html {
-      scroll-behavior: smooth;
-    }
-    
-    /* Custom gradient for hero section */
-    .hero-gradient {
-      background: linear-gradient(135deg, #1E40AF 0%, #0D9488 100%);
-    }
-    
-    /* Card shadows and hover effects */
-    .card-shadow {
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    }
-    
-    .card-hover {
-      transition: all 0.3s ease;
-    }
-    
-    .card-hover:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-    }
-
-    /* Mobile menu animation */
-    .mobile-menu {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease-out;
-    }
-    
-    .mobile-menu.open {
-      max-height: 300px;
-    }
-
-    /* Responsive images */
-    .responsive-img {
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-    }
-
-    /* Mobile-specific styles */
-    @media (max-width: 768px) {
-      .section-padding {
-        padding-left: 1rem;
-        padding-right: 1rem;
-      }
-      
-      .mobile-text-center {
-        text-align: center;
-      }
-      
-      .mobile-stack {
-        flex-direction: column;
-      }
-      
-      .mobile-full-width {
-        width: 100%;
-      }
-    }
-  </style>
 </head>
 
 <body class="font-sans bg-slate-50 text-slate-800" x-data="{ mobileOpen: false }">
   <!-- Navigation -->
   <header>
-    <nav class="fixed top-0 inset-x-0 z-50 nav-blur border-b border-slate-200 shadow-sm" data-aos="fade-down">
+    <nav class="fixed top-0 inset-x-0 z-50 nav-blur border-b border-slate-200 shadow-sm">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex h-16 items-center justify-between">
           <!-- Logo -->
@@ -193,7 +119,7 @@
           </div>
         </div>
 
-        <div class="relative order-first lg:order-last" data-aos="fade-left" data-aos-delay="200">
+        <div class="relative order-first lg:order-last" data-aos="zoom-in" data-aos-delay="200">
           <img src="img/hero.jpg" alt="Pemandangan alam Lombok dengan pantai dan perbukitan" class="rounded-2xl shadow-lg w-full responsive-img max-h-[400px] md:max-h-[420px]" />
           <div class="absolute -bottom-4 -left-4 bg-white border border-slate-200 rounded-xl px-4 py-3 shadow-sm" data-aos="zoom-in" data-aos-delay="500">
             <p class="text-xs text-slate-500">Destinasi tersedia</p>
@@ -709,49 +635,6 @@
               </div>
             </div>
           </article>
-
-          <!-- Car 3 - Toyota Hiace -->
-          <article class="bg-white rounded-2xl overflow-hidden card-shadow card-hover group" data-aos="fade-up" data-aos-delay="200">
-            <div class="relative bg-slate-100 h-40 sm:h-44 flex items-center justify-center overflow-hidden">
-              <img src="img/hiace.jpg"
-                  alt="Toyota Hiace - mobil van untuk rombongan besar"
-                  class="max-h-full w-auto object-contain transition-transform duration-500 group-hover:scale-105">
-              <div class="absolute bottom-3 left-3">
-                <span class="bg-white/95 text-slate-700 text-xs font-medium px-3 py-1 rounded-full shadow-sm">
-                  15 Penumpang
-                </span>
-              </div>
-            </div>
-            
-            <div class="p-6 space-y-4">
-              <div class="space-y-2">
-                <h3 class="font-semibold text-slate-900 text-lg">Toyota Hiace</h3>
-                <p class="text-slate-600 text-sm">Ideal untuk rombongan besar, outing, atau acara keluarga.</p>
-              </div>
-              
-              <div class="flex items-center gap-4 text-sm text-slate-500">
-                <div class="flex items-center gap-1">
-                  <i class="fas fa-cog text-xs" aria-hidden="true"></i>
-                  <span>Manual</span>
-                </div>
-                <div class="flex items-center gap-1">
-                  <i class="fas fa-snowflake text-xs" aria-hidden="true"></i>
-                  <span>AC Kuat</span>
-                </div>
-              </div>
-
-              <div class="flex items-center justify-between pt-2">
-                <div class="space-y-1">
-                  <p class="text-xl font-bold text-slate-900">Rp1.000.000</p>
-                  <p class="text-xs text-slate-500">termasuk sopir &amp; BBM</p>
-                </div>
-                <a href="#contact" class="text-primary font-medium text-sm hover:text-slate-900 transition flex items-center gap-2">
-                  Pesan
-                  <i class="fas fa-arrow-right text-xs" aria-hidden="true"></i>
-                </a>
-              </div>
-            </div>
-          </article>
         </div>
 
         <p class="text-sm text-slate-500 mt-8 text-center">
@@ -976,7 +859,8 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
-  <script src="tailwind.config.js"></script>
+
+
   <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
