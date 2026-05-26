@@ -1177,6 +1177,9 @@ html {
   height: auto;
   object-fit: cover;
 }
+.js-hidden {
+  display: none !important;
+}
 .section-padding {
   padding-left: 1rem;
   padding-right: 1rem;
@@ -1203,9 +1206,6 @@ html {
   .mobile-full-width {
     width: 100%;
   }
-}
-.hidden {
-  display: none !important;
 }
 @property --tw-space-y-reverse {
   syntax: "*";

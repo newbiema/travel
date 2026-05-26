@@ -64,6 +64,10 @@ html {
   object-fit: cover;
 }
 
+.js-hidden {
+  display: none !important;
+}
+
 
 /* 4. Konsolidasi Media Query (section-padding) */
 
@@ -104,4 +108,3 @@ html {
   }
 }
 
-  .hidden { display: none !important; }

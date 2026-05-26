@@ -174,12 +174,12 @@
           <!-- Mobile Menu Button -->
           <button id="mobile-toggle" class="md:hidden p-2 rounded-lg hover:bg-slate-100" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
             <i id="icon-open" class="fas fa-bars text-slate-700" aria-hidden="true"></i>
-            <i id="icon-close" class="fas fa-times text-slate-700 hidden" aria-hidden="true"></i>
+            <i id="icon-close" class="fas fa-times text-slate-700 js-hidden" aria-hidden="true"></i>
           </button>
         </div>
 
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="md:hidden pb-4 space-y-2 bg-white rounded-lg mt-2 shadow-lg hidden">
+        <div id="mobile-menu" class="md:hidden pb-4 space-y-2 bg-white rounded-lg mt-2 shadow-lg js-hidden">
           <a href="#home" class="block py-3 px-4 text-slate-700 hover:text-primary hover:bg-slate-50 rounded-md" data-close-mobile>Home</a>
           <a href="#destinations" class="block py-3 px-4 text-slate-700 hover:text-primary hover:bg-slate-50 rounded-md" data-close-mobile>Destinasi</a>
           <a href="#rental" class="block py-3 px-4 text-slate-700 hover:text-primary hover:bg-slate-50 rounded-md" data-close-mobile>Sewa Mobil</a>
@@ -1137,21 +1137,21 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!toggleBtn || !menu || !iconOpen || !iconClose) return;
 
     if (open) {
-      menu.classList.remove('hidden');
-      iconOpen.classList.add('hidden');
-      iconClose.classList.remove('hidden');
+      menu.classList.remove('js-hidden');
+      iconOpen.classList.add('js-hidden');
+      iconClose.classList.remove('js-hidden');
       toggleBtn.setAttribute('aria-expanded', 'true');
     } else {
-      menu.classList.add('hidden');
-      iconOpen.classList.remove('hidden');
-      iconClose.classList.add('hidden');
+      menu.classList.add('js-hidden');
+      iconOpen.classList.remove('js-hidden');
+      iconClose.classList.add('js-hidden');
       toggleBtn.setAttribute('aria-expanded', 'false');
     }
   }
 
   toggleBtn?.addEventListener('click', () => {
     if (!menu) return;
-    const isOpen = !menu.classList.contains('hidden');
+    const isOpen = !menu.classList.contains('js-hidden');
     setMobileMenu(!isOpen);
   });
 
